@@ -9,10 +9,12 @@
 var express = require("express");
 var mysql = require("mysql2");
 var bodyParser = require("body-parser");
+var cors = require("cors");
 
 /** initial webapp setup */
 var app = express();
-app.set("view engine", "ejs");
+app.use(cors());
+app.use(express.json());
 
 // this is required to access post values in the post route below
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -81,6 +83,22 @@ app.get("/", function (req, res) {
  */
 // get route; reading / viewing collection
 app.get("/collection", function (req, res) {
+  // creating the collection table, if it does not already exist
+  let createQuery = `CREATE TABLE IF NOT EXISTS collection ( 
+        id INT PRIMARY KEY AUTO_INCREMENT, 
+        item_name VARCHAR(100) NOT NULL, 
+        quantity INT NOT NULL, 
+        item_type VARCHAR(50) NOT NULL, 
+        price DOUBLE NOT NULL,
+        additional_notes VARCHAR(255), 
+        created_at TIMESTAMP DEFAULT NOW() 
+    )`;
+  connection.query(createQuery, function (err, result) {
+    if (err) throw err;
+    // DEBUG
+    // console.log("Successfully created the collection table!");
+  });
+
   // DEBUG
   console.log("REQUESTED THE collection ROUTE!");
   res.send("This is the collection page!");
