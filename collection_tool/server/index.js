@@ -5,6 +5,18 @@
  * - various express routes for each of the tools
  */
 
+/** tool 1: collection CRUD page
+ *  - this will be done with a single table that has a column
+ *    to distinguish item type
+ *  - this page will display a table with the following functionality:
+ *    - a "create" button to create a new row; users will fill out a form
+ *    - a "delete" button which will ask for an id of the row(s) to delete
+ *      - NOTE: this is a shortcoming; I eventually want to have a
+ *              button next to each row to delete
+ *    - an "edit" button to update a row based on id
+ *    - a "search" button to find rows based on a specified column value
+ */
+
 /** import statements */
 var express = require("express");
 var mysql = require("mysql2");
@@ -44,24 +56,37 @@ var connection = mysql.createConnection({
 /** routes in webapp */
 /** home page
  *  - creates the local database, if it does not already exist
- *  - displays four buttons corresponding to each of the four
- *    tools for the user to navigate to
+ *  - uses the database and creates the collection table, if it does not already exist
  */
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
   let db_name = "keeb_companion_db";
-  let createQuery = `CREATE DATABASE IF NOT EXISTS ${db_name}`;
+  let createDbQuery = `CREATE DATABASE IF NOT EXISTS ${db_name}`;
 
   // creating local database
-  connection.query(createQuery, function (err, result) {
+  connection.query(createDbQuery, (err, result) => {
     if (err) throw err;
     // DEBUG
     // console.log(`Successfully created database ${db_name}!`);
 
-    let useQuery = `USE ${db_name}`;
-    connection.query(useQuery, function (err, result) {
+    let useDbQuery = `USE ${db_name}`;
+    connection.query(useDbQuery, (err, result) => {
       if (err) throw err;
       // DEBUG
       // console.log(`Using database ${db_name}!`);
+      let createTableQuery = `CREATE TABLE IF NOT EXISTS collection ( 
+        id INT PRIMARY KEY AUTO_INCREMENT, 
+        item_name VARCHAR(100) NOT NULL, 
+        quantity INT NOT NULL, 
+        item_type VARCHAR(50) NOT NULL, 
+        price DOUBLE NOT NULL,
+        additional_notes VARCHAR(255), 
+        created_at TIMESTAMP DEFAULT NOW() 
+      )`;
+      connection.query(createTableQuery, (err, result) => {
+        if (err) throw err;
+        // DEBUG
+        // console.log("Successfully created the collection table!");
+      });
     });
   });
 
@@ -70,97 +95,5 @@ app.get("/", function (req, res) {
   res.send("This is the home page!");
 });
 
-/** tool 1: collection CRUD page
- *  - this will be done with a single table that has a column
- *    to distinguish item type
- *  - this page will display a table with the following functionality:
- *    - a "create" button to create a new row; users will fill out a form
- *    - a "delete" button which will ask for an id of the row(s) to delete
- *      - NOTE: this is a shortcoming; I eventually want to have a
- *              button next to each row to delete
- *    - an "edit" button to update a row based on id
- *    - a "search" button to find rows based on a specified column value
- */
-// get route; reading / viewing collection
-app.get("/collection", function (req, res) {
-  // creating the collection table, if it does not already exist
-  let createQuery = `CREATE TABLE IF NOT EXISTS collection ( 
-        id INT PRIMARY KEY AUTO_INCREMENT, 
-        item_name VARCHAR(100) NOT NULL, 
-        quantity INT NOT NULL, 
-        item_type VARCHAR(50) NOT NULL, 
-        price DOUBLE NOT NULL,
-        additional_notes VARCHAR(255), 
-        created_at TIMESTAMP DEFAULT NOW() 
-    )`;
-  connection.query(createQuery, function (err, result) {
-    if (err) throw err;
-    // DEBUG
-    // console.log("Successfully created the collection table!");
-  });
-
-  // DEBUG
-  console.log("REQUESTED THE collection ROUTE!");
-  res.send("This is the collection page!");
-});
-
-// post route; creating item to add to collection
-app.post("/collectionCreate", function (req, res) {
-  console.log("POST REQUEST SENT TO THE collectionCreate ROUTE!");
-});
-
-// post route; updating existing item in collection
-app.post("/collectionUpdate", function (req, res) {
-  console.log("POST REQUEST SENT TO THE collectionUpdate ROUTE!");
-});
-
-// post route; deleting existing item in collection
-app.post("/collectionDelete", function (req, res) {
-  console.log("POST REQUEST SENT TO THE collectionDelete ROUTE!");
-});
-
-/** tool 2: sales CRUD page */
-// get route; reading / viewing sales
-app.get("/sales", function (req, res) {
-  // DEBUG
-  console.log("REQUESTED THE sales ROUTE!");
-  res.send("This is the sales page!");
-});
-
-// post route; creating item to add to sales
-app.post("/salesCreate", function (req, res) {
-  console.log("POST REQUEST SENT TO THE salesCreate ROUTE!");
-});
-
-// post route; updating existing item in sales
-app.post("/salesUpdate", function (req, res) {
-  console.log("POST REQUEST SENT TO THE salesUpdate ROUTE!");
-});
-
-// post route; deleting existing item in sales
-app.post("/salesDelete", function (req, res) {
-  console.log("POST REQUEST SENT TO THE salesDelete ROUTE!");
-});
-
-/** tool 3: group_buys CRUD page */
-// get route; reading / viewing sales
-app.get("/group_buys", function (req, res) {
-  // DEBUG
-  console.log("REQUESTED THE group_buys ROUTE!");
-  res.send("This is the group_buys page!");
-});
-
-// post route; creating item to add to sales
-app.post("/gbsCreate", function (req, res) {
-  console.log("POST REQUEST SENT TO THE gbsCreate ROUTE!");
-});
-
-// post route; updating existing item in sales
-app.post("/gbsUpdate", function (req, res) {
-  console.log("POST REQUEST SENT TO THE gbsUpdate ROUTE!");
-});
-
-// post route; deleting existing item in sales
-app.post("/gbsDelete", function (req, res) {
-  console.log("POST REQUEST SENT TO THE gbsDelete ROUTE!");
-});
+// route to display the collection table
+app.get("/api/get", (req, res) => {});

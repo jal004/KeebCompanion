@@ -1,11 +1,11 @@
 {
-  "name": "keebcompanion",
+  "name": "server",
   "description": "Web application to practice MySQL, NodeJS, and Express concepts. This project contains the development of four useful tools for keyboard enthusiasts.",
   "version": "1.0.0",
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
-    "keebcompanion": "nodemon app.js",
+    "server": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
