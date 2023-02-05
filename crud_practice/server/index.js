@@ -23,6 +23,16 @@ app.get("/api/get", (req, res) => {
   });
 });
 
+app.post("/api/post", (req, res) => {
+  const { name, email, contact } = req.body;
+  // syntax for multi variable dynamic insertion
+  const sqlInsert =
+    "INSERT INTO contacts (name, email, contact) VALUES (?, ?, ?)";
+  db.query(sqlInsert, [name, email, contact], (err, result) => {
+    if (err) throw err;
+  });
+});
+
 app.get("/", (req, res) => {
   res.send("Hello world!");
 });
