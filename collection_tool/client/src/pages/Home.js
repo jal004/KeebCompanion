@@ -69,6 +69,18 @@ const Home = () => {
           })}
         </tbody>
       </table>
+      <Link to={"/addItem"}>
+        <button className="btn btn-stats">View By Type</button>
+      </Link>
+      <Link to={"/addItem"}>
+        <button className="btn btn-stats">View Stats By Type</button>
+      </Link>
+      <Link to={"/addItem"}>
+        <button className="btn btn-stats">View By Price</button>
+      </Link>
+      <Link to={"/addItem"}>
+        <button className="btn btn-stats">View By Quantity</button>
+      </Link>
     </div>
   );
 };
