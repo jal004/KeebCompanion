@@ -5,6 +5,10 @@ import "./App.css";
 import AddEdit from "./pages/AddEdit";
 import Home from "./pages/Home";
 import View from "./pages/View";
+import ViewType from "./pages/ViewType";
+import ViewStatsType from "./pages/ViewStatsType";
+import ViewPrice from "./pages/ViewPrice";
+import ViewQuantity from "./pages/ViewQuantity";
 
 function App() {
   return (
@@ -19,6 +23,10 @@ function App() {
           <Route path="/addItem" element={<AddEdit />} />
           <Route path="/update/:id" element={<AddEdit />} />
           <Route path="/view/:id" element={<View />} />
+          <Route path="/view/byType" element={<ViewType />} />
+          <Route path="/view/statsByType" element={<ViewStatsType />} />
+          <Route path="/view/byPrice" element={<ViewPrice />} />
+          <Route path="/view/byQuantity" element={<ViewQuantity />} />
         </Routes>
       </div>
     </BrowserRouter>

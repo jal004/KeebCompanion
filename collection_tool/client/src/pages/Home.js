@@ -69,16 +69,16 @@ const Home = () => {
           })}
         </tbody>
       </table>
-      <Link to={"/addItem"}>
+      <Link to={"/byType"}>
         <button className="btn btn-stats">View By Type</button>
       </Link>
-      <Link to={"/addItem"}>
+      <Link to={"/statsByType"}>
         <button className="btn btn-stats">View Stats By Type</button>
       </Link>
-      <Link to={"/addItem"}>
+      <Link to={"/byPrice"}>
         <button className="btn btn-stats">View By Price</button>
       </Link>
-      <Link to={"/addItem"}>
+      <Link to={"/byQuantity"}>
         <button className="btn btn-stats">View By Quantity</button>
       </Link>
     </div>
