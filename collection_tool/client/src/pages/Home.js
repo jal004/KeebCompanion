@@ -37,7 +37,7 @@ const Home = () => {
             <th style={{ textAlign: "center" }}>Item Name</th>
             <th style={{ textAlign: "center" }}>Quantity</th>
             <th style={{ textAlign: "center" }}>Item Type</th>
-            <th style={{ textAlign: "center" }}>Price</th>
+            <th style={{ textAlign: "center" }}>Price ($)</th>
             <th style={{ textAlign: "center" }}>Action</th>
           </tr>
         </thead>
