@@ -1,3 +1,4 @@
+/* added select to this form */
 input[type="text"],
 input[type="number"],
 textarea,
@@ -12,10 +13,14 @@ select {
   font-family: Arial;
 }
 
+/* styling for choices text in select*/
 select option {
   color: black;
 }
 
+/* styling for placeholder text in text; 
+   default placeholder color is 'gray' / 'grey'
+*/
 select:invalid,
 select option[value=""] {
   color: grey;

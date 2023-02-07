@@ -127,6 +127,7 @@ const AddEdit = () => {
           required
           onChange={handleInputChange}
         >
+          {/* required for placeholder text in select */}
           <option value="" selected disabled hidden>
             Select the type of the item
           </option>

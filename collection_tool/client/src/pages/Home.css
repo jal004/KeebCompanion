@@ -2,6 +2,9 @@
   border-collapse: collapse;
   margin: auto;
   font-size: 0.9em;
+  /* in order to ensure the placeholder 
+  text of the textarea tag matches the input tags  
+  */
   font-family: sans-serif;
   max-width: 800px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -61,6 +64,7 @@
   margin-bottom: 10px;
 }
 
+/* additional view buttons below table */
 .btn-stats {
   background-color: #e82764;
   margin-top: 20px;
