@@ -18,6 +18,7 @@ const ViewStatsType = () => {
   return (
     <div style={{ marginTop: "150px" }}>
       <h1>Statistics Of Collection By Type</h1>
+      <h2 style={{ marginTop: "30px" }}>Price Statistics</h2>
       <table className="styled-table">
         <thead>
           <tr>
@@ -25,9 +26,10 @@ const ViewStatsType = () => {
             <th style={{ textAlign: "center" }}>Min. Price ($)</th>
             <th style={{ textAlign: "center" }}>Max. Price ($)</th>
             <th style={{ textAlign: "center" }}>Avg. Price ($)</th>
-            <th style={{ textAlign: "center" }}>Min. Quantity</th>
-            <th style={{ textAlign: "center" }}>Max. Quantity</th>
-            <th style={{ textAlign: "center" }}>Avg. Quantity</th>
+            <th style={{ textAlign: "center" }}>Total Price ($)</th>
+            <th style={{ textAlign: "center" }}>
+              Price Percentage of Entire Collection (%)
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +40,29 @@ const ViewStatsType = () => {
                 <td>{item.min_price}</td>
                 <td>{item.max_price}</td>
                 <td>{item.avg_price}</td>
+                <td>{item.total_price}</td>
+                <td>{item.pct_price}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+      <h2 style={{ marginTop: "30px" }}>Quantity Statistics</h2>
+      <table className="styled-table">
+        <thead>
+          <tr>
+            <th style={{ textAlign: "center" }}>Item Type</th>
+            <th style={{ textAlign: "center" }}>Min. Quantity</th>
+            <th style={{ textAlign: "center" }}>Max. Quantity</th>
+            <th style={{ textAlign: "center" }}>Avg. Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => {
+            return (
+              <tr key={item.id}>
+                <td>{item.item_type}</td>
                 <td>{item.min_quantity}</td>
                 <td>{item.max_quantity}</td>
                 <td>{item.avg_quantity}</td>

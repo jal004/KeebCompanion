@@ -32,7 +32,7 @@ const AddEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!item_name || !quantity || !item_type || !price || !additional_notes) {
+    if (!item_name || !quantity || !item_type || !price) {
       toast.error("Please fill out all of the input fields");
     } else {
       if (!id) {
@@ -147,7 +147,7 @@ const AddEdit = () => {
           onChange={handleInputChange}
         />
 
-        <label htmlFor="additional_notes">Additional Notes</label>
+        <label htmlFor="additional_notes">Additional Notes (Optional)</label>
         <textarea
           style={{ resize: "none" }}
           type="text"

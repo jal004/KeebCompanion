@@ -103,7 +103,7 @@ app.delete("/api/remove/:id", (req, res) => {
 // view table by type
 app.get("/api/getByType", (req, res) => {
   const sqlGetByType =
-    "SELECT * FROM collection ORDER BY item_type, price DESC";
+    "SELECT * FROM collection ORDER BY item_type, CAST(price AS DOUBLE) DESC";
   db.query(sqlGetByType, (err, result) => {
     if (err) throw err;
     res.send(result);
@@ -119,7 +119,9 @@ app.get("/api/getStats", (req, res) => {
       AVG(price) AS avg_price, 
       MIN(CAST(quantity AS DOUBLE)) AS min_quantity, 
       MAX(CAST(quantity AS DOUBLE)) AS max_quantity, 
-      TRUNCATE(AVG(quantity), 0) AS avg_quantity 
+      TRUNCATE(AVG(quantity), 0) AS avg_quantity,
+      SUM(price) AS total_price,
+      TRUNCATE(SUM(price) / (SELECT SUM(price) FROM collection) * 100, 2) AS pct_price
       FROM collection 
     GROUP BY item_type 
     ORDER BY item_type;`;

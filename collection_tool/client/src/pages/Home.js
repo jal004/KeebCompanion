@@ -36,7 +36,7 @@ const Home = () => {
     <div style={{ marginTop: "150px" }}>
       <h1>Collection</h1>
       <Link to={"/addItem"}>
-        <button className="btn btn-contact">Add Item</button>
+        <button className="btn btn-item">Add Item</button>
       </Link>
       <button className="btn btn-deleteAll" onClick={() => deleteAllItems()}>
         Delete All Items
