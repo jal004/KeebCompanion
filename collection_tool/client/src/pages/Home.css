@@ -7,12 +7,12 @@
   */
   font-family: sans-serif;
   max-width: 800px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px var(--table-shadow);
 }
 
 .styled-table thead tr {
-  background-color: #6f737a;
-  color: #ffffff;
+  background-color: var(--table-primary);
+  color: var(--text-secondary);
   text-align: left;
 }
 
@@ -21,57 +21,59 @@
   padding: 12px 15px;
 }
 
+/* NOTE: the odd rows change color wrt to the background */
 .styled.table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
 .styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: var(--table-secondary);
 }
 
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #6f737a;
+  border-bottom: 2px solid var(--table-primary);
 }
 
 .btn {
   border: none;
   color: white;
-  padding: 5px 8px;
+  padding: 6px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
   font-size: 16px;
+  font-weight: bold;
   margin: 4px 2px;
   cursor: pointer;
 }
 
 .btn-edit {
-  background-color: #008cba;
+  background-color: var(--edit-btn);
 }
 
 .btn-delete {
-  background-color: #f44336;
+  background-color: var(--delete-btn);
 }
 
 .btn-deleteAll {
-  background-color: #f44336;
+  background-color: var(--delete-btn);
   margin-left: 15px;
 }
 
 .btn-view {
-  background-color: #e7e7e7;
+  background-color: var(--view-btn);
   color: black;
 }
 
 .btn-item {
-  background-color: #4caf50;
+  background-color: var(--add-btn);
   margin-bottom: 20px;
 }
 
 /* additional view buttons below table */
 .btn-stats {
-  background-color: #6f737a;
+  background-color: var(--table-primary);
   margin-top: 20px;
   margin-left: 10px;
   margin-right: 10px;

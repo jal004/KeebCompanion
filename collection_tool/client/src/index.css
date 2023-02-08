@@ -1,13 +1,124 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* create color themes here; 
+use these variables in other CSS files to create a theme dependencies */
+/* default theme */
+:root {
+  --background: white;
+  --text-primary: black;
+  --text-secondary: white;
+  --table-primary: #6f737a;
+  --table-secondary: #f3f3f3;
+  --table-shadow: rgba(0, 0, 0, 0.15);
+  --add-btn: #4caf50;
+  --delete-btn: #f44336;
+  --edit-btn: #008cba;
+  --view-btn: #e7e7e7;
+  --select-primary: black;
+  --select-secondary: grey;
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: white;
+}
+
+[data-theme="light"] {
+  --background: white;
+  --text-primary: black;
+  --text-secondary: white;
+  --table-primary: #6f737a;
+  --table-secondary: #f3f3f3;
+  --table-shadow: rgba(0, 0, 0, 0.15);
+  --add-btn: #4caf50;
+  --delete-btn: #f44336;
+  --edit-btn: #008cba;
+  --view-btn: #e7e7e7;
+  --select-primary: black;
+  --select-secondary: grey;
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: white;
+}
+
+[data-theme="dark"] {
+  --background: rgb(20, 20, 20);
+  --text-primary: white;
+  --text-secondary: white;
+  --table-primary: #4e4e4e;
+  --table-secondary: #222222;
+  --table-shadow: rgba(95, 95, 95, 0.5);
+  --add-btn: #285e2a;
+  --delete-btn: #a11c12;
+  --edit-btn: #0d4b9b;
+  --view-btn: #b8b8b8;
+  --select-primary: white;
+  --select-secondary: rgb(230, 230, 230);
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: rgb(155, 155, 155);
+}
+
+[data-theme="9009"] {
+  --background: rgb(20, 20, 20);
+  --text-primary: white;
+  --text-secondary: white;
+  --table-primary: #4e4e4e;
+  --table-secondary: #222222;
+  --table-shadow: rgba(95, 95, 95, 0.5);
+  --add-btn: #285e2a;
+  --delete-btn: #a11c12;
+  --edit-btn: #0d4b9b;
+  --view-btn: #b8b8b8;
+  --select-primary: white;
+  --select-secondary: rgb(230, 230, 230);
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: rgb(155, 155, 155);
+}
+
+[data-theme="modo"] {
+  --background: rgb(20, 20, 20);
+  --text-primary: white;
+  --text-secondary: white;
+  --table-primary: #4e4e4e;
+  --table-secondary: #222222;
+  --table-shadow: rgba(95, 95, 95, 0.5);
+  --add-btn: #285e2a;
+  --delete-btn: #a11c12;
+  --edit-btn: #0d4b9b;
+  --view-btn: #b8b8b8;
+  --select-primary: white;
+  --select-secondary: rgb(230, 230, 230);
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: rgb(155, 155, 155);
+}
+
+[data-theme="botanical"] {
+  --background: rgb(20, 20, 20);
+  --text-primary: white;
+  --text-secondary: white;
+  --table-primary: #4e4e4e;
+  --table-secondary: #222222;
+  --table-shadow: rgba(95, 95, 95, 0.5);
+  --add-btn: #285e2a;
+  --delete-btn: #a11c12;
+  --edit-btn: #0d4b9b;
+  --view-btn: #b8b8b8;
+  --select-primary: white;
+  --select-secondary: rgb(230, 230, 230);
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: rgb(155, 155, 155);
 }

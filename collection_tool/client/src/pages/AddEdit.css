@@ -7,15 +7,21 @@ select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
   border-radius: 4px;
   box-sizing: border-box;
   font-family: Arial;
+  background-color: var(--accent);
+  color: var(--select-primary);
+}
+
+::placeholder {
+  color: var(--select-secondary);
 }
 
 /* styling for choices text in select*/
 select option {
-  color: black;
+  color: var(--select-primary);
 }
 
 /* styling for placeholder text in text; 
@@ -23,28 +29,32 @@ select option {
 */
 select:invalid,
 select option[value=""] {
-  color: grey;
+  color: var(--select-secondary);
 }
 
 input[type="submit"] {
   width: 100%;
-  background-color: #4caf50;
+  background-color: var(--add-btn);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
+  font-size: medium;
+  font-weight: bold;
   cursor: pointer;
 }
 
 input[type="button"] {
   width: 100%;
-  background-color: #40453e;
+  background-color: var(--table-primary);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
+  font-size: medium;
+  font-weight: bold;
   cursor: pointer;
 }
 
