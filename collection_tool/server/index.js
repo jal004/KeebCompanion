@@ -100,6 +100,21 @@ app.delete("/api/remove/:id", (req, res) => {
   });
 });
 
+// additional views of the table in the home page
+// view table by type
+app.get("/api/getByType", (req, res) => {
+  const sqlUseDb = "USE KeebCompanion";
+  db.query(sqlUseDb, (err, result) => {
+    if (err) throw err;
+    const sqlGetByType =
+      "SELECT * FROM collection ORDER BY item_type, price DESC";
+    db.query(sqlGetByType, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
 app.listen(5000, function () {
   console.log("Server running on port 5000!");
 });
