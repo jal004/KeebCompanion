@@ -71,3 +71,8 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+/* back button for each view page */
+.btn-back-view {
+  margin-top: 20px;
+}

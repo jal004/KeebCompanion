@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./View.css";
 
 const View = () => {
   const [item, setItem] = useState({});
   const { id } = useParams();
+
+  // back goes to previous page instead of home;
+  // allows users to go back to a table view after viewing one of its rows
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -20,7 +24,7 @@ const View = () => {
           <p>Item Details</p>
         </div>
         <div className="container">
-          <strong>ID: </strong>
+          <strong>Item ID: </strong>
           <span>{id}</span>
           <br />
           <br />
@@ -52,9 +56,17 @@ const View = () => {
           <span>{item.updated_at}</span>
           <br />
           <br />
-          <Link to="/">
-            <div className="btn btn-edit">Go Back</div>
-          </Link>
+          {/* changed to a button that goes back to
+           previous page instead of home page; 
+           also inline style to make it look like previous Link tag
+          */}
+          <button
+            style={{ paddingTop: "8px" }}
+            className="btn btn-edit"
+            onClick={() => navigate(-1)}
+          >
+            Go Back
+          </button>
         </div>
       </div>
     </div>
