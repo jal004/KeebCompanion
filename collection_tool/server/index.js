@@ -103,15 +103,30 @@ app.delete("/api/remove/:id", (req, res) => {
 // additional views of the table in the home page
 // view table by type
 app.get("/api/getByType", (req, res) => {
-  const sqlUseDb = "USE KeebCompanion";
-  db.query(sqlUseDb, (err, result) => {
+  const sqlGetByType =
+    "SELECT * FROM collection ORDER BY item_type, price DESC";
+  db.query(sqlGetByType, (err, result) => {
     if (err) throw err;
-    const sqlGetByType =
-      "SELECT * FROM collection ORDER BY item_type, price DESC";
-    db.query(sqlGetByType, (err, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
+    res.send(result);
+  });
+});
+
+// view stats by type
+app.get("/api/getStats", (req, res) => {
+  const sqlGetStats = `SELECT 
+      item_type, 
+      MIN(CAST(price AS DOUBLE)) AS min_price, 
+      MAX(CAST(price AS DOUBLE)) AS max_price, 
+      AVG(price) AS avg_price, 
+      MIN(CAST(quantity AS DOUBLE)) AS min_quantity, 
+      MAX(CAST(quantity AS DOUBLE)) AS max_quantity, 
+      TRUNCATE(AVG(quantity), 0) AS avg_quantity 
+      FROM collection 
+    GROUP BY item_type 
+    ORDER BY item_type;`;
+  db.query(sqlGetStats, (err, result) => {
+    if (err) throw err;
+    res.send(result);
   });
 });
 
