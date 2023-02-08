@@ -93,7 +93,6 @@ app.put("/api/update/:id", (req, res) => {
 // deleting a row
 app.delete("/api/remove/:id", (req, res) => {
   const { id } = req.params;
-  // syntax for single dynamic cond deletion
   const sqlRemove = "DELETE FROM collection WHERE id = ?";
   db.query(sqlRemove, id, (err, result) => {
     if (err) throw err;
@@ -127,6 +126,41 @@ app.get("/api/getStats", (req, res) => {
   db.query(sqlGetStats, (err, result) => {
     if (err) throw err;
     res.send(result);
+  });
+});
+
+// view table by price
+app.get("/api/getByPrice", (req, res) => {
+  const sqlGetByPrice = `SELECT * FROM collection 
+    ORDER BY 
+      CAST(price AS DOUBLE) DESC, 
+      CAST(quantity AS DOUBLE) DESC,
+      item_name`;
+  db.query(sqlGetByPrice, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// view table by quantity
+app.get("/api/getByQuantity", (req, res) => {
+  const sqlGetByPrice = `SELECT * FROM collection 
+    ORDER BY  
+      CAST(quantity AS DOUBLE) DESC,
+      CAST(price AS DOUBLE) DESC,
+      item_name`;
+  db.query(sqlGetByPrice, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// deleting all rows
+app.delete("/api/removeAll", (req, res) => {
+  const { id } = req.params;
+  const sqlRemove = "DELETE FROM collection";
+  db.query(sqlRemove, (err, result) => {
+    if (err) throw err;
   });
 });
 

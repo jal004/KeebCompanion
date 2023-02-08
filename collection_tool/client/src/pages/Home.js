@@ -24,12 +24,23 @@ const Home = () => {
     }
   };
 
+  const deleteAllItems = () => {
+    if (window.confirm("Are you sure you want to delete ALL of the items?")) {
+      axios.delete("http://localhost:5000/api/removeAll/");
+      toast.success("All Of The Items Deleted Successfully!");
+      setTimeout(() => loadData(), 500);
+    }
+  };
+
   return (
     <div style={{ marginTop: "150px" }}>
       <h1>Collection</h1>
       <Link to={"/addItem"}>
         <button className="btn btn-contact">Add Item</button>
       </Link>
+      <button className="btn btn-deleteAll" onClick={() => deleteAllItems()}>
+        Delete All Items
+      </button>
       <table className="styled-table">
         <thead>
           <tr>
