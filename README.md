@@ -6,7 +6,7 @@ KeebCompanion is a collection of web applications that I have created to practic
 
 ## The Web Applications:
 
-Below are brief descriptions of each of the four tools. **For additional information on each of the web applications, please navigate to their respective folders in the GitHub repository**
+Below are brief descriptions of each of the four tools. _For additional information on each of the web applications, please navigate to their respective folders in the GitHub repository_
 
 ### 1. KeebCollection
 

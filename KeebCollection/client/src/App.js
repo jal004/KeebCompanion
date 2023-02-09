@@ -39,19 +39,19 @@ function App() {
   return (
     <div data-theme={theme}>
       <button class="btn" id="themeBtn" onClick={modoTheme}>
-        Modern Dolch Theme
+        Modern Dolch
       </button>
       <button class="btn" id="themeBtn" onClick={botanicalTheme}>
-        Botanical Theme
+        Botanical
       </button>
       <button class="btn" id="themeBtn" onClick={nineKnineTheme}>
-        9009 Theme
+        9009
       </button>
       <button class="btn" id="themeBtn" onClick={darkTheme}>
-        Dark Theme
+        Dark
       </button>
       <button class="btn" id="themeBtn" onClick={lightTheme}>
-        Default Theme
+        Default
       </button>
       <h2 id="themesHeader"> Themes: </h2>
       <BrowserRouter>

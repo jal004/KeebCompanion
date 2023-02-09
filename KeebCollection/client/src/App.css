@@ -20,6 +20,7 @@
 
 #themesHeader {
   float: right;
+  margin-top: 18px;
   margin-right: 20px;
   color: var(--text-primary);
 }
