@@ -10,9 +10,8 @@
 }
 
 #themeBtn {
-  color: var(--text-primary);
-  background-color: var(--background);
-  border: 2px var(--text-primary) solid;
+  color: var(--text-secondary);
+  background-color: var(--table-primary);
   float: right;
   transition: all 0.5s;
   margin-top: 20px;

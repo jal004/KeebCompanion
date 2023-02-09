@@ -31,6 +31,7 @@ use these variables in other CSS files to create a theme dependencies */
   --select-background: white;
   --input-border: #ccc;
   --accent: white;
+  --submit-hover: #45a049;
 }
 
 [data-theme="light"] {
@@ -49,6 +50,7 @@ use these variables in other CSS files to create a theme dependencies */
   --select-background: white;
   --input-border: #ccc;
   --accent: white;
+  --submit-hover: #45a049;
 }
 
 [data-theme="dark"] {
@@ -57,68 +59,80 @@ use these variables in other CSS files to create a theme dependencies */
   --text-secondary: white;
   --table-primary: #4e4e4e;
   --table-secondary: #222222;
-  --table-shadow: rgba(95, 95, 95, 0.5);
+  --table-shadow: rgba(48, 48, 48, 0.5);
   --add-btn: #285e2a;
   --delete-btn: #a11c12;
   --edit-btn: #0d4b9b;
-  --view-btn: #b8b8b8;
+  --view-btn: #a8a8a8;
   --select-primary: white;
   --select-secondary: rgb(230, 230, 230);
   --select-background: white;
   --input-border: #ccc;
   --accent: rgb(155, 155, 155);
+  --submit-hover: #1f4921;
 }
 
 [data-theme="9009"] {
-  --background: rgb(20, 20, 20);
-  --text-primary: white;
-  --text-secondary: white;
-  --table-primary: #4e4e4e;
-  --table-secondary: #222222;
+  --background: #d8d2c3;
+  --text-primary: #171718;
+  --text-secondary: #171718;
+  --table-primary: #858171;
+  --table-secondary: #aca693;
   --table-shadow: rgba(95, 95, 95, 0.5);
-  --add-btn: #285e2a;
-  --delete-btn: #a11c12;
-  --edit-btn: #0d4b9b;
+  --add-btn: #768e72;
+  --delete-btn: #c87e74;
+  --edit-btn: #768e72;
   --view-btn: #b8b8b8;
-  --select-primary: white;
-  --select-secondary: rgb(230, 230, 230);
+  --select-primary: #171718;
+  --select-secondary: #686868;
   --select-background: white;
-  --input-border: #ccc;
-  --accent: rgb(155, 155, 155);
+  --input-border: #aca693;
+  --accent: #dadada;
+  /* standard dark color hover */
+  /* --submit-hover: #62755f; */
+  --submit-hover: #c87e74;
 }
 
-[data-theme="modo"] {
-  --background: rgb(20, 20, 20);
-  --text-primary: white;
-  --text-secondary: white;
-  --table-primary: #4e4e4e;
-  --table-secondary: #222222;
-  --table-shadow: rgba(95, 95, 95, 0.5);
-  --add-btn: #285e2a;
-  --delete-btn: #a11c12;
-  --edit-btn: #0d4b9b;
-  --view-btn: #b8b8b8;
-  --select-primary: white;
-  --select-secondary: rgb(230, 230, 230);
-  --select-background: white;
-  --input-border: #ccc;
-  --accent: rgb(155, 155, 155);
-}
+/* alphas: #dee3eb,
+   mods: #3e5d58,
+   accent: #92aba0
+ */
 
 [data-theme="botanical"] {
-  --background: rgb(20, 20, 20);
+  --background: #d3dfd9;
+  --text-primary: #3e5d58;
+  --text-secondary: #aac0b7;
+  --table-primary: #2d423f;
+  --table-secondary: #a3c0b2;
+  --table-shadow: rgba(95, 95, 95, 0.5);
+  --add-btn: #4b706a;
+  --delete-btn: #60746c;
+  --edit-btn: #4b706a;
+  --view-btn: rgb(241, 240, 240);
+  --select-primary: #3e5d58;
+  --select-secondary: grey;
+  --select-background: white;
+  --input-border: #3e5d58;
+  --accent: white;
+  --submit-hover: #42635d;
+}
+[data-theme="modo"] {
+  --background: rgb(118, 122, 125);
   --text-primary: white;
   --text-secondary: white;
   --table-primary: #4e4e4e;
-  --table-secondary: #222222;
-  --table-shadow: rgba(95, 95, 95, 0.5);
-  --add-btn: #285e2a;
-  --delete-btn: #a11c12;
-  --edit-btn: #0d4b9b;
+  --table-secondary: rgb(78, 79, 83);
+  --table-shadow: rgba(0, 0, 0, 0.25);
+  --add-btn: rgb(130, 217, 209);
+  --delete-btn: rgb(187, 86, 102);
+  --edit-btn: rgb(130, 217, 209);
   --view-btn: #b8b8b8;
   --select-primary: white;
-  --select-secondary: rgb(230, 230, 230);
+  --select-secondary: rgb(212, 212, 212);
   --select-background: white;
-  --input-border: #ccc;
+  --input-border: rgb(78, 79, 83);
   --accent: rgb(155, 155, 155);
+  /* standard dark color hover */
+  /* --submit-hover: rgb(110, 180, 173); */
+  --submit-hover: rgb(187, 86, 102);
 }
