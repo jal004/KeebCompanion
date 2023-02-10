@@ -16,7 +16,7 @@ const ViewStatsType = () => {
   }, []);
 
   return (
-    <div style={{ marginTop: "150px" }}>
+    <div style={{ marginTop: "160px" }}>
       <h1>Statistics Of Collection By Type</h1>
       <h2 style={{ marginTop: "30px" }}>Price Statistics</h2>
       <table className="styled-table">

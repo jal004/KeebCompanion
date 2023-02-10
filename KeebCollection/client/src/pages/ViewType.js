@@ -16,7 +16,7 @@ const ViewType = () => {
   }, []);
 
   return (
-    <div style={{ marginTop: "150px" }}>
+    <div style={{ marginTop: "160px" }}>
       <h1>Collection By Type</h1>
       <table className="styled-table">
         <thead>
