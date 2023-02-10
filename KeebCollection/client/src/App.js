@@ -18,26 +18,36 @@ function App() {
 
   const lightTheme = () => {
     setTheme("light");
+    document.getElementById("logo").src = "/assets/logos/webapp_default.png";
   };
 
   const darkTheme = () => {
     setTheme("dark");
+    document.getElementById("logo").src = "/assets/logos/webapp_dark.png";
   };
 
   const nineKnineTheme = () => {
     setTheme("9009");
+    document.getElementById("logo").src = "/assets/logos/webapp_9009.png";
   };
 
   const botanicalTheme = () => {
     setTheme("botanical");
+    document.getElementById("logo").src = "/assets/logos/webapp_botanical.png";
   };
 
   const modoTheme = () => {
     setTheme("modo");
+    document.getElementById("logo").src = "/assets/logos/webapp_modo2.png";
   };
 
   return (
     <div data-theme={theme}>
+      <img
+        src="/assets/logos/webapp_default.png"
+        alt="The KeebCompanion logo"
+        id="logo"
+      />
       <button class="btn" id="themeBtn" onClick={modoTheme}>
         Modern Dolch
       </button>

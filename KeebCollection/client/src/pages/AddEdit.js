@@ -33,7 +33,7 @@ const AddEdit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!item_name || !quantity || !item_type || !price) {
-      toast.error("Please fill out all of the input fields");
+      toast.error("Please fill out all of the required input fields");
     } else {
       if (!id) {
         axios
@@ -89,7 +89,7 @@ const AddEdit = () => {
   };
 
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div style={{ marginTop: "160px" }}>
       <h1 id="title">Add Item</h1>
       <form
         style={{
@@ -134,6 +134,7 @@ const AddEdit = () => {
           <option value="Keyboard">Keyboard</option>
           <option value="Switches">Switches</option>
           <option value="Keycaps">Keycaps</option>
+          <option value="Artisan">Artisan</option>
           <option value="Other">Other</option>
         </select>
 

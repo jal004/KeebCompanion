@@ -54,7 +54,7 @@ use these variables in other CSS files to create a theme dependencies */
 }
 
 [data-theme="dark"] {
-  --background: rgb(20, 20, 20);
+  --background: #141414;
   --text-primary: white;
   --text-secondary: white;
   --table-primary: #4e4e4e;
@@ -65,10 +65,10 @@ use these variables in other CSS files to create a theme dependencies */
   --edit-btn: #0d4b9b;
   --view-btn: #a8a8a8;
   --select-primary: white;
-  --select-secondary: rgb(230, 230, 230);
+  --select-secondary: #e6e6e6;
   --select-background: white;
   --input-border: #ccc;
-  --accent: rgb(155, 155, 155);
+  --accent: #9b9b9b;
   --submit-hover: #1f4921;
 }
 
@@ -108,7 +108,7 @@ use these variables in other CSS files to create a theme dependencies */
   --add-btn: #4b706a;
   --delete-btn: #60746c;
   --edit-btn: #4b706a;
-  --view-btn: rgb(241, 240, 240);
+  --view-btn: #f1f0f0;
   --select-primary: #3e5d58;
   --select-secondary: grey;
   --select-background: white;
@@ -117,22 +117,22 @@ use these variables in other CSS files to create a theme dependencies */
   --submit-hover: #42635d;
 }
 [data-theme="modo"] {
-  --background: rgb(118, 122, 125);
+  --background: #767a7d;
   --text-primary: white;
   --text-secondary: white;
   --table-primary: #4e4e4e;
-  --table-secondary: rgb(78, 79, 83);
+  --table-secondary: #4e4f53;
   --table-shadow: rgba(0, 0, 0, 0.25);
-  --add-btn: rgb(130, 217, 209);
-  --delete-btn: rgb(187, 86, 102);
-  --edit-btn: rgb(130, 217, 209);
+  --add-btn: #82d9d1;
+  --delete-btn: #bb5666;
+  --edit-btn: #82d9d1;
   --view-btn: #b8b8b8;
   --select-primary: white;
-  --select-secondary: rgb(212, 212, 212);
+  --select-secondary: #d4d4d4;
   --select-background: white;
   --input-border: rgb(78, 79, 83);
-  --accent: rgb(155, 155, 155);
+  --accent: #9b9b9b;
   /* standard dark color hover */
   /* --submit-hover: rgb(110, 180, 173); */
-  --submit-hover: rgb(187, 86, 102);
+  --submit-hover: #bb5666;
 }

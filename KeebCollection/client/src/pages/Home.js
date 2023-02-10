@@ -33,7 +33,7 @@ const Home = () => {
   };
 
   return (
-    <div style={{ marginTop: "150px" }}>
+    <div style={{ marginTop: "160px" }}>
       <h1>KeebCollection</h1>
       <Link to={"/addItem"}>
         <button className="btn btn-item">Add Item</button>
