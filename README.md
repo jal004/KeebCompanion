@@ -58,16 +58,17 @@ For additional information on each of the web applications, please navigate to t
 
 ### 2. Installation of NodeJS
 
-- <a href="https://nodejs.org/en/download/" target="_blank">Node Website</a>
+- <a href="https://nodejs.org/en/download/" target="_blank">Node Installation</a>
 
 ### 3. Installation of MySQL Workbench
 
-- <a href="https://www.mysql.com/products/workbench/" target="_blank">MySQL Workbench Website</a>
+- <a href="https://www.mysql.com/products/workbench/" target="_blank">MySQL Workbench Installation</a>
 
 ## Setup: Creating a Local Connection in MySQL Workbench
 
 - Since each of the tools in KeebCompanion uses MySQL to store user information, we need to create a local connection in MySQL Workbench that we can connect each of the web applications.
 - If you have already installed MySQL Workbench, you will already have a local connection consisting of the 'root' user with a password that you created in the MySQL installer during the installation.
+  **This means that you have completed the setup and can move on to the next section, keeping note of the password associated with the 'root' user.**
 - If this is your first time using MySQL Workbench, you will have to create the 'root' user during the installation.
 
   - During the installation, select 'Next' on all of the pages of the installer to install MySQL Workbench using the recommended settings.
@@ -92,27 +93,23 @@ For additional information on each of the web applications, please navigate to t
     <!-- <figcaption style="text-align: center; font-style: italic">Local Instance for 'root' Highlighted in Red</figcaption> -->
   </figure>
 
-- Keep note of the password created for the 'root' user as we will be using it to connect each of the web applications to this MySQL local instance before running them.
+  - **Keep note of the password created for the 'root' user as we will be using it to connect each of the web applications to this MySQL local instance before running them.**
 
-<!-- The following lines below will not be used here, but parts of it can be used in the individual README's -->
-<!-- ### 2. Running the Web Applications
+## Running the Web Applications
 
-- In order to run each of the four web applications:
-  1. Clone the repository
-  2. Navigate to the directory of the repository
-  3. Navigate to the directory of the desired application
-  4. Complete the additional setup specified in the README of that directory on GitHub
-  5. Run the command:
+After cloning the repository and navigating to the directory of the repository:
 
-```
-npm run start-app
-```
-
-- The absolute paths from the repository folder (KeebCompanion) that we have to navigate to in order to run the command above are:
-
-```
-/KeebCompanion/KeebCollection
-/KeebCompanion/KeebSales
-/KeebCompanion/KeebieGeebies
-/KeebCompanion/KeebTimer
-``` -->
+1. Navigate to the directory of the application that you would like to run.
+   - The absolute paths to each of the four application directories are:
+     ```
+     /KeebCompanion/KeebCollection
+     /KeebCompanion/KeebSales
+     /KeebCompanion/KeebieGeebies
+     /KeebCompanion/KeebTimer
+     ```
+2. Then, open the directory corresponding to the desired application to run on GitHub and follow the provided 'Setup' section in that directory.
+   - This step is only required for the first usage of each application.
+3. Run the following command in the directory of the desired application to start that application:
+   ```
+   npm run start-app
+   ```
