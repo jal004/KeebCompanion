@@ -22,10 +22,10 @@ For additional information on each of the web applications, please navigate to t
 
 <figure style="display: block; margin: 0 auto; width: 75%; margin-bottom: 30px"> 
   <img style = "box-shadow: 0 0 10px #00000040" src="imgs/png/collection_preview.png" />
-  <figcaption style="text-align: center; font-style: italic">KeebCollection Home Page</figcaption>
+  <!-- <figcaption style="text-align: center; font-style: italic">KeebCollection Home Page</figcaption> -->
 </figure>
 
-- A mechanical keyboard collection manager that allows users to create, read, update, and delete (CRUD) items to / from a table.
+- A mechanical keyboard collection manager that allows users to create, read, update, and delete (CRUD) items to or from a table.
 - The application allows users to view the table sorted by specific parameters (price, item type, quantity).
 - Users can also view statistics for the items in the table.
 - <a href="https://github.com/jal004/KeebCompanion/tree/main/KeebCollection" target="_blank">Additional Information</a>
@@ -76,7 +76,7 @@ For additional information on each of the web applications, please navigate to t
 
   <figure style="display: block; margin: 0 auto; width: 80%; margin-top: 10px;margin-bottom: 30px"> 
     <img src="imgs/png/mysql_setup_auth.png" />
-    <figcaption style="text-align: center; font-style: italic">Prompt to Create Password for 'root' in MySQL Installer</figcaption>
+    <!-- <figcaption style="text-align: center; font-style: italic">Prompt to Create Password for 'root' in MySQL Installer</figcaption> -->
   </figure>
 
   - Create the password for 'root' in the following page and continue selecting 'Next' on the remaining pages of MySQL Installer.
@@ -89,7 +89,7 @@ For additional information on each of the web applications, please navigate to t
   - After successfully installing MySQL Workbench, the home page of MySQL Workbench should contain a local connection instance under the user 'root'.
   <figure style="display: block; margin: 0 auto; width: 80%; margin-top: 10px; margin-bottom: 30px"> 
     <img style = "box-shadow: 0 0 10px #00000040" src="imgs/png/mysql_success.png" />
-    <figcaption style="text-align: center; font-style: italic">Local Instance for 'root' Highlighted in Red</figcaption>
+    <!-- <figcaption style="text-align: center; font-style: italic">Local Instance for 'root' Highlighted in Red</figcaption> -->
   </figure>
 
 - Keep note of the password created for the 'root' user as we will be using it to connect each of the web applications to this MySQL local instance before running them.
