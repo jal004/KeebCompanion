@@ -38,7 +38,7 @@ function App() {
 
   const modoTheme = () => {
     setTheme("modo");
-    document.getElementById("logo").src = "/assets/logos/webapp_modo2.png";
+    document.getElementById("logo").src = "/assets/logos/webapp_modo.png";
   };
 
   return (
