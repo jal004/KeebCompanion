@@ -84,7 +84,7 @@ For additional information on each of the web applications, please navigate to t
 
   <figure style="display: block; margin: 0 auto; width: 80%; margin-top: 10px; margin-bottom: 30px"> 
     <img src="imgs/png/mysql_root_pass.png" />
-    <figcaption style="text-align: center; font-style: italic">Page to Create Password for 'root' in MySQL Installer</figcaption>
+    <!-- <figcaption style="text-align: center; font-style: italic">Page to Create Password for 'root' in MySQL Installer</figcaption> -->
   </figure>
 
   - After successfully installing MySQL Workbench, the home page of MySQL Workbench should contain a local connection instance under the user 'root' _(Highlighted in red below)_.
@@ -101,7 +101,7 @@ After cloning the repository:
 
 1. Open the directory of the repository and a terminal on your desired text editor.
 2. Using your terminal, navigate to the directory of the application that you would like to run.
-   - The absolute paths to each of the four application directories are:
+   - The absolute paths to each of the four application directories are from the repository directory are:
      ```
      /KeebCompanion/KeebCollection
      /KeebCompanion/KeebSales
