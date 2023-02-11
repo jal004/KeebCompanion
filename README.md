@@ -10,7 +10,7 @@
 
 ## Background:
 
-Are you a mechanical keyboard enthusiast that has trouble managing their collection? Do you have trouble managing all of your purchases or sales? Or do you just wish that there were more tools that specifically support this hobby? If any of these apply to you, then look no further!
+Are you a mechanical keyboard enthusiast that has trouble managing their collection? Do you have trouble managing all of your sales or purchases? What about more specialized tools for this hobby? If any of these apply to you, then look no further!
 
 Introducing KeebCompanion, a collection of four web applications that can be used by mechanical keyboard enthusiasts and those that plan on entering the hobby. Below are brief descriptions of the four tools.
 
@@ -87,7 +87,7 @@ For additional information on each of the web applications, please navigate to t
     <figcaption style="text-align: center; font-style: italic">Page to Create Password for 'root' in MySQL Installer</figcaption>
   </figure>
 
-  - After successfully installing MySQL Workbench, the home page of MySQL Workbench should contain a local connection instance under the user 'root'.
+  - After successfully installing MySQL Workbench, the home page of MySQL Workbench should contain a local connection instance under the user 'root' _(Highlighted in red below)_.
   <figure style="display: block; margin: 0 auto; width: 80%; margin-top: 10px; margin-bottom: 30px"> 
     <img style = "box-shadow: 0 0 10px #00000040" src="imgs/png/mysql_success.png" />
     <!-- <figcaption style="text-align: center; font-style: italic">Local Instance for 'root' Highlighted in Red</figcaption> -->
@@ -97,9 +97,10 @@ For additional information on each of the web applications, please navigate to t
 
 ## Running the Web Applications
 
-After cloning the repository and navigating to the directory of the repository:
+After cloning the repository:
 
-1. Navigate to the directory of the application that you would like to run.
+1. Open the directory of the repository and a terminal on your desired text editor.
+2. Using your terminal, navigate to the directory of the application that you would like to run.
    - The absolute paths to each of the four application directories are:
      ```
      /KeebCompanion/KeebCollection
@@ -107,9 +108,10 @@ After cloning the repository and navigating to the directory of the repository:
      /KeebCompanion/KeebieGeebies
      /KeebCompanion/KeebTimer
      ```
-2. Then, open the directory corresponding to the desired application to run on GitHub and follow the provided 'Setup' section in that directory.
+3. Then, find the directory corresponding to the desired application on GitHub and follow the provided 'Setup' section in that directory in order to connect MySQL to the application.
    - This step is only required for the first usage of each application.
-3. Run the following command in the directory of the desired application to start that application:
+4. Run the following command from your terminal in the directory of the desired application to start that application:
    ```
    npm run start-app
    ```
+5. To exit any of the apps, execute 'Ctrl+C' in your terminal, then enter 'Y' followed by the 'Enter' key to close the app.
