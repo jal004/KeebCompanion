@@ -41,8 +41,6 @@ KeebCollection is a CRUD web application that allows users to manage their items
 - Users can create their item with their input information by pressing the 'Save' button, or cancel the creation by pressing the 'Go Back' button.
   - After pressing either button, the user will be redirected back to the home page of the application.
 
-<!-- add gif of demo here -->
-
 #### 1.2. Read
 
 - Users can read an item in their collection by selecting the 'View' action for the row corresponding to the item.
@@ -66,8 +64,6 @@ KeebCollection is a CRUD web application that allows users to manage their items
 
 - Users will be redirected to the page prior to pressing the 'View' button by pressing the 'Go Back' button.
 
-<!-- add gif of demo here -->
-
 #### 1.3. Update
 
 - Users can update an item in their collection by selecting the 'Edit' action for the row corresponding to the item.
@@ -87,8 +83,6 @@ KeebCollection is a CRUD web application that allows users to manage their items
 - Users can update their item with their input information by pressing the 'Save' button, or cancel the update by pressing the 'Go Back' button.
   - After pressing either button, the user will be redirected back to the home page of the application.
 
-<!-- add gif of demo here -->
-
 #### 1.4. Delete
 
 - Users can delete a single item from their collection by selecting the 'Delete' action for the row corresponding to the item.
@@ -100,8 +94,6 @@ KeebCollection is a CRUD web application that allows users to manage their items
 />
 
 - Pressing either of these buttons will not redirect users to a new page, but rather they will receive a prompt from their web browser confirming the deletion before performing the operation.
-
-<!-- add gif of demo here -->
 
 ### 2. Additional Views
 
@@ -115,8 +107,6 @@ The following are various read operations for users to view their collection wit
 - picture of redirected page
 - description on return
 
-<!-- add gif of demo here -->
-
 #### 2.2. View Stats By Type
 
 - description of view
@@ -124,8 +114,6 @@ The following are various read operations for users to view their collection wit
 - description of redirected page
 - picture of redirected page
 - description on return
-
-<!-- add gif of demo here -->
 
 #### 2.3. View By Price
 
@@ -135,8 +123,6 @@ The following are various read operations for users to view their collection wit
 - picture of redirected page
 - description on return
 
-<!-- add gif of demo here -->
-
 #### 2.4. View By Quantity
 
 - description of view
@@ -144,8 +130,6 @@ The following are various read operations for users to view their collection wit
 - description of redirected page
 - picture of redirected page
 - description on return
-
-<!-- add gif of demo here -->
 
 ### 3. Changing the Application Theme
 
@@ -188,9 +172,9 @@ The following are various read operations for users to view their collection wit
 
 ## Known Issues:
 
-1. 'Item Type' field selection is not being saved when editing an existing item
+1. The 'Item Type' field selection is not being saved when editing an existing item
    - This does not affect update functionality, but it can be inconvenient having to reselect the item type every time an item is updated.
-2. KeebCompanion logo is not matching the saved application theme when relaunching
+2. The KeebCompanion logo is not matching the saved application theme when relaunching
    - This is because the default logo corresponds to the light theme.
    - After relaunching, reselecting the saved theme will fix the logo so that it matches the theme again.
    - Future plans are to convert the logos from PNG to SVG so that we can modify the colors with CSS instead of changing the picture on a theme change.
