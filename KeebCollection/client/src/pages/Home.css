@@ -82,5 +82,6 @@
 
 /* back button for each view page */
 .btn-back-view {
+  font-family: sans-serif;
   margin-top: 20px;
 }

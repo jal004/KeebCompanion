@@ -4,13 +4,12 @@
   <img 
     src="imgs/png/logo_main2.png"
     alt="KeebCompanion Logo"
-    style="display: block; margin: 0 auto; width: 35%"
   />
 </p>
 
 ## Background:
 
-Are you a mechanical keyboard enthusiast that has trouble managing their collection? Do you have trouble managing all of your sales or purchases? What about more specialized tools for this hobby? If any of these apply to you, then look no further!
+Are you a mechanical keyboard enthusiast that has trouble managing their collection? What about your sales or purchases? Do you wish there were more specialized tools for this hobby? If any of these apply to you, then look no further!
 
 Introducing KeebCompanion, a collection of four web applications that can be used by mechanical keyboard enthusiasts and those that plan on entering the hobby. Below are brief descriptions of the four tools.
 
@@ -20,10 +19,10 @@ For additional information on each of the web applications, please navigate to t
 
 ### 1. KeebCollection
 
-<figure style="display: block; margin: 0 auto; width: 75%; margin-bottom: 30px"> 
+<!-- <figure style="display: block; margin: 0 auto; width: 75%; margin-bottom: 30px">
   <img style = "box-shadow: 0 0 10px #00000040" src="imgs/png/collection_preview.png" />
-  <!-- <figcaption style="text-align: center; font-style: italic">KeebCollection Home Page</figcaption> -->
-</figure>
+  <figcaption style="text-align: center; font-style: italic">KeebCollection Home Page</figcaption>
+</figure> -->
 
 - A mechanical keyboard collection manager that allows users to create, read, update, and delete (CRUD) items to or from a table.
 - The application allows users to view the table sorted by specific parameters (price, item type, quantity).
@@ -108,8 +107,8 @@ After cloning the repository:
      /KeebCompanion/KeebieGeebies
      /KeebCompanion/KeebTimer
      ```
-3. Then, find the directory corresponding to the desired application on GitHub and follow the provided 'Setup' section in that directory in order to connect MySQL to the application.
-   - This step is only required for the first usage of each application.
+3. Then, find the directory corresponding to the desired application on GitHub and follow the provided 'Setup' section on the README of that directory in order to connect MySQL to the application.
+   - This step is only required for the first usage of each application; every future use will not require this.
 4. Run the following command from your terminal in the directory of the desired application to start that application:
    ```
    npm run start-app
