@@ -26,7 +26,7 @@
 
 ## Background:
 
-Are you a mechanical keyboard enthusiast that has trouble managing their collection? What about your managing your sales or purchases? Do you wish there were more specialized tools for this hobby? If so, then look no further!
+Are you a mechanical keyboard enthusiast that has trouble managing their collection? What about managing your sales or purchases? Do you wish there were more specialized tools for this hobby? If so, then look no further!
 
 Introducing KeebCompanion, a collection of four web applications that can be used by mechanical keyboard enthusiasts and those that plan on entering the hobby. Below are brief descriptions of the four tools.
 
