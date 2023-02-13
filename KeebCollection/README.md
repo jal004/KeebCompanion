@@ -245,7 +245,7 @@ The following are various read operations for users to view their collection wit
    - `start-app` is a script that uses the Node package `concurrently` to run the server and client side files in parallel within a single terminal shell.
 
      - This allows for users to easily run and exit the app with a single command
-     - For more details on the script, view the `package.json` file in the `KeebCollection` directory
+     - For more details on the script, view the `package.json` file in the `KeebCollection` directory [here](https://github.com/jal004/KeebCompanion/blob/main/KeebCollection/package.json)
 
    - **To run the application**, open a terminal in your desired text editor, navigate to the `KeebCollection` directory and run the command:
 
