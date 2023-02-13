@@ -7,6 +7,23 @@
   />
 </p>
 
+## Table of Contents:
+
+- [KeebCompanion](#keebcompanion)
+  - [Table of Contents:](#table-of-contents)
+  - [Background:](#background)
+  - [The Web Applications:](#the-web-applications)
+    - [1. KeebCollection](#1-keebcollection)
+    - [2. KeebSales](#2-keebsales)
+    - [3. KeebieGeebies](#3-keebiegeebies)
+    - [4. KeebTimer](#4-keebtimer)
+  - [System Requirements:](#system-requirements)
+    - [1. Minimum hardware requirements for ReactJS](#1-minimum-hardware-requirements-for-reactjs)
+    - [2. Installation of NodeJS](#2-installation-of-nodejs)
+    - [3. Installation of MySQL Workbench](#3-installation-of-mysql-workbench)
+  - [Setup (Creating a Local Connection in MySQL Workbench):](#setup-creating-a-local-connection-in-mysql-workbench)
+  - [Running the Web Applications:](#running-the-web-applications)
+
 ## Background:
 
 Are you a mechanical keyboard enthusiast that has trouble managing their collection? What about your managing your sales or purchases? Do you wish there were more specialized tools for this hobby? If so, then look no further!
@@ -63,7 +80,7 @@ For additional information on each of the web applications, please navigate to t
 
 - <a href="https://www.mysql.com/products/workbench/" target="_blank">MySQL Workbench Installation</a>
 
-## Setup: Creating a Local Connection in MySQL Workbench
+## Setup (Creating a Local Connection in MySQL Workbench):
 
 - Since each of the tools in KeebCompanion uses MySQL to store user information, we need to create a local connection in MySQL Workbench that we can connect each of the web applications.
 - If you have already installed MySQL Workbench, you will already have a local connection consisting of the 'root' user with a password that you created in the MySQL installer during the installation.
@@ -94,7 +111,7 @@ For additional information on each of the web applications, please navigate to t
 
   - **Keep note of the password created for the 'root' user as we will be using it to connect each of the web applications to this MySQL local instance before running them.**
 
-## Running the Web Applications
+## Running the Web Applications:
 
 After cloning the repository:
 
