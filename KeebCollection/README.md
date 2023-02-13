@@ -125,6 +125,7 @@ The following are various read operations for users to view their collection wit
 />
 
 - Pressing this button will redirect the user to a page with two tables that display statistical values that pertain to two parameters:
+
   a. Price Statistics
 
   - Minimum (Min.) Price; minimum price of an item of the item type
@@ -220,8 +221,8 @@ The following are various read operations for users to view their collection wit
 
 4. Change the following values _(Highlighted in green above)_ in this body of text:
 
-   - The value of `user` ("local_user") to "root"
-   - The value of `password` ("password") to the password that you created in the 'Setup' section of the main README wrapped in double-quotes.
+   - The value corresponding to `user` ("local_user") to "root"
+   - The value corresponding to `password` ("password") to the password that you created in the 'Setup' section of the main README wrapped in double-quotes.
    - The text should now look like the following, with your created password replacing
      `<your password here>`:
      ```

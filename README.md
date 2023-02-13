@@ -9,7 +9,7 @@
 
 ## Background:
 
-Are you a mechanical keyboard enthusiast that has trouble managing their collection? What about your sales or purchases? Do you wish there were more specialized tools for this hobby? If any of these apply to you, then look no further!
+Are you a mechanical keyboard enthusiast that has trouble managing their collection? What about your managing your sales or purchases? Do you wish there were more specialized tools for this hobby? If so, then look no further!
 
 Introducing KeebCompanion, a collection of four web applications that can be used by mechanical keyboard enthusiasts and those that plan on entering the hobby. Below are brief descriptions of the four tools.
 
@@ -24,7 +24,7 @@ For additional information on each of the web applications, please navigate to t
   <figcaption style="text-align: center; font-style: italic">KeebCollection Home Page</figcaption>
 </figure> -->
 
-- A mechanical keyboard collection manager that allows users to create, read, update, and delete (CRUD) items to or from a table.
+- A mechanical keyboard collection manager that allows users to create, read, update, and delete (CRUD) items to, or from a table.
 - The application allows users to view the table sorted by specific parameters (price, item type, quantity).
 - Users can also view statistics for the items in the table.
 - <a href="https://github.com/jal004/KeebCompanion/tree/main/KeebCollection" target="_blank">Additional Information</a>
