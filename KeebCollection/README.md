@@ -7,6 +7,27 @@
   />
 </p>
 
+## Table of Contents:
+
+- [KeebCollection](#keebcollection)
+  - [Table of Contents:](#table-of-contents)
+  - [Description:](#description)
+  - [Features:](#features)
+    - [1. CRUD Operations](#1-crud-operations)
+      - [1.1. Create](#11-create)
+      - [1.2. Read](#12-read)
+      - [1.3. Update](#13-update)
+      - [1.4. Delete](#14-delete)
+    - [2. Additional Views](#2-additional-views)
+      - [2.1 View By Type](#21-view-by-type)
+      - [2.2. View Stats By Type](#22-view-stats-by-type)
+      - [2.3. View By Price](#23-view-by-price)
+      - [2.4. View By Quantity](#24-view-by-quantity)
+    - [3. Changing the Application Theme](#3-changing-the-application-theme)
+  - [Setup:](#setup)
+  - [How to Run the Application:](#how-to-run-the-application)
+  - [Known Issues:](#known-issues)
+
 ## Description:
 
 KeebCollection is a CRUD web application that allows users to manage their items related to mechanical keyboards. The application also provides users with statistics corresponding to their items as well as the option to sort the items by various parameters.
@@ -199,7 +220,7 @@ The following are various read operations for users to view their collection wit
   - Botanical; nature color scheme inspired by the keycap set [GMK Botanical](https://geekhack.org/index.php?topic=104954.0)
   - Modern Dolch; grayscale color scheme inspired by the keycap set [GMK Modern Dolch](https://geekhack.org/index.php?topic=106764.0)
 
-![Demonstration of the themes](../media/videos/collection_readme/collection_theme_cycle_final.gif)
+![Demonstration of the themes](../media/videos/collection_readme/collection_theme_cycle_revised.gif)
 
 - The theme that a user selects will be saved when relaunching the application in the future.
 
@@ -213,18 +234,17 @@ The following are various read operations for users to view their collection wit
      ```
      /KeebCompanion/KeebCollection/server/index.js
      ```
-3. Locate the following body of text _(Highlighted in red below)_ in `index.js`:
+3. Locate the following body of text in `index.js` _(Highlighted in red below)_:
 
 <img 
   src="../media/imgs/png/collection_readme/collection_setup.png"
 />
 
-4. Change the following values _(Highlighted in green above)_ in this body of text:
+4. Change the following values in this body of text _(Highlighted in green above)_:
 
    - The value corresponding to `user` ("local_user") to "root"
    - The value corresponding to `password` ("password") to the password that you created in the 'Setup' section of the main README wrapped in double-quotes.
-   - The text should now look like the following, with your created password replacing
-     `<your password here>`:
+   - The text should now look like the following, replacing `<your password here>` with your created password:
      ```
      var db = mysql.createConnection({
        host: "localhost",

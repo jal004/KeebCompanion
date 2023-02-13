@@ -9,9 +9,45 @@
   transition: all 0.5s;
 }
 
-#themeBtn {
+#modoThemeBtn {
   color: var(--text-secondary);
-  background-color: var(--table-primary);
+  background-color: var(--theme-5);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#botanicalThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-4);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#nineKnineThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-3);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#darkThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-2);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#defaultThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-1);
   float: right;
   transition: all 0.5s;
   margin-top: 20px;

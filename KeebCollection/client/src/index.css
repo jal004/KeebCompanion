@@ -32,6 +32,12 @@ use these variables in other CSS files to create a theme dependencies */
   --input-border: #ccc;
   --accent: white;
   --submit-hover: #45a049;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #008cba;
+  --theme-2: #6f737a;
+  --theme-3: #6f737a;
+  --theme-4: #6f737a;
+  --theme-5: #6f737a;
 }
 
 [data-theme="light"] {
@@ -51,6 +57,12 @@ use these variables in other CSS files to create a theme dependencies */
   --input-border: #ccc;
   --accent: white;
   --submit-hover: #45a049;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #008cba;
+  --theme-2: #6f737a;
+  --theme-3: #6f737a;
+  --theme-4: #6f737a;
+  --theme-5: #6f737a;
 }
 
 [data-theme="dark"] {
@@ -70,6 +82,12 @@ use these variables in other CSS files to create a theme dependencies */
   --input-border: #ccc;
   --accent: #9b9b9b;
   --submit-hover: #1f4921;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #6f737a;
+  --theme-2: #0d4b9b;
+  --theme-3: #6f737a;
+  --theme-4: #6f737a;
+  --theme-5: #6f737a;
 }
 
 [data-theme="9009"] {
@@ -91,6 +109,12 @@ use these variables in other CSS files to create a theme dependencies */
   /* standard dark color hover */
   /* --submit-hover: #62755f; */
   --submit-hover: #c87e74;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #858171;
+  --theme-2: #858171;
+  --theme-3: #c87e74;
+  --theme-4: #858171;
+  --theme-5: #858171;
 }
 
 /* alphas: #dee3eb,
@@ -115,6 +139,12 @@ use these variables in other CSS files to create a theme dependencies */
   --input-border: #3e5d58;
   --accent: white;
   --submit-hover: #42635d;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #2d423f;
+  --theme-2: #2d423f;
+  --theme-3: #2d423f;
+  --theme-4: #4b706a;
+  --theme-5: #2d423f;
 }
 [data-theme="modo"] {
   --background: #767a7d;
@@ -135,4 +165,10 @@ use these variables in other CSS files to create a theme dependencies */
   /* standard dark color hover */
   /* --submit-hover: rgb(110, 180, 173); */
   --submit-hover: #bb5666;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #4e4e4e;
+  --theme-2: #4e4e4e;
+  --theme-3: #4e4e4e;
+  --theme-4: #4e4e4e;
+  --theme-5: #bb5666;
 }
