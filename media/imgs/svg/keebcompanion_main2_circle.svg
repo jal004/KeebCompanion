@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0.581 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="365.23" y1="119.129" x2="365.23" y2="359.78" id="gradient-1" gradientTransform="matrix(0.873228, -0.487311, 0.520486, 0.850323, -10.703974, 231.811615)">
+      <stop offset="0" style="stop-color: rgb(255, 255, 255);"/>
+      <stop offset="1" style=""/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="171.845" y1="172.255" x2="171.845" y2="359.554" id="gradient-0" gradientTransform="matrix(0.983301, 0.181978, -0.129688, 0.93977, 30.20862, 15.102958)">
+      <stop offset="0" style="stop-color: rgb(203, 203, 203);"/>
+      <stop offset="1" style="stop-color: rgb(24, 24, 24);"/>
+    </linearGradient>
+    <radialGradient gradientUnits="userSpaceOnUse" cx="250.258" cy="163.225" r="64.997" id="gradient-3" gradientTransform="matrix(0.988106, 0.153773, -0.192421, 1.236444, 39.384467, -41.076858)">
+      <stop offset="0" style="stop-color: rgb(255, 96, 162);"/>
+      <stop offset="1" style="stop-color: rgb(255, 188, 217);"/>
+    </radialGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="253.488" y1="55.855" x2="253.488" y2="233.87" id="gradient-2" gradientTransform="matrix(-0.978045, 0.208397, -0.181921, -0.648996, 510.138438, 167.771907)" spreadMethod="reflect">
+      <stop offset="0" style="stop-color: rgb(207, 207, 207);"/>
+      <stop offset="1" style="stop-color: rgb(241, 241, 241);"/>
+    </linearGradient>
+    <style bx:fonts="Libre Franklin">@import url(https://fonts.googleapis.com/css2?family=Libre+Franklin%3Aital%2Cwght%400%2C100%3B0%2C200%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800%3B0%2C900%3B1%2C100%3B1%2C200%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700%3B1%2C800%3B1%2C900&amp;display=swap);</style>
+    <bx:grid x="-0.696" y="0.696" width="100" height="100"/>
+    <path id="text-path-0" d="M -33.816 321.746 C 22.626 471.661 226.814 491.653 323.655 403.251"/>
+    <path id="text-path-1" d="M 147.207 90.042 C 186.167 65.228 252.742 60.576 293.372 93.2"/>
+    <path id="text-path-2" d="M 89.524 434.737 C 178.335 497.113 291.381 525.408 417.764 434.737"/>
+  </defs>
+  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(159, 178, 182); stroke-opacity: 0;" cx="250" cy="250.291" rx="250" ry="249.71"/>
+  <path style="stroke: rgb(0, 0, 0); stroke-opacity: 0; fill: url(#gradient-2);" d="M 263.88 91.855 C 292.079 147.839 352.151 204.481 414.482 239.895 L 250.305 269.87 C 185.556 233.743 124.972 164.215 102.493 123.558 L 263.88 91.855 Z" transform="matrix(0.869467, -0.493991, 0.493991, 0.869467, -55.603304, 151.299026)"/>
+  <path style="stroke: rgb(0, 55, 255); stroke-opacity: 0; fill: url(#gradient-0);" d="M 295.54 395.554 L 58.149 335.538 L 94.369 208.255 C 136.938 234.232 226.093 262.952 295.267 262.067 L 295.54 395.554 Z" transform="matrix(0.999998, 0.001908, -0.001908, 0.999998, 0.576356, -0.33687)"/>
+  <path style="stroke: rgb(255, 0, 0); stroke-opacity: 0; fill: url(#gradient-1);" d="M 445.118 251.641 L 295.361 395.78 L 295.342 262.293 L 423.281 155.129 L 445.118 251.641 Z"/>
+  <title>red-heart</title>
+  <path class="cls-1" d="M 249.718 233.729 C 254.584 241.623 257.474 248.447 269.49 249.8 C 291.992 252.295 322.848 229.875 320.081 207.801 C 319.292 201.516 315.494 194.039 310.905 186.704 C 305.867 178.651 299.876 170.756 295.868 164.773 L 284.93 148.459 L 264.924 161.541 C 240.853 177.29 204.071 197.111 192.914 221.669 C 185.176 238.872 195.21 249.894 212.067 249.696 C 227.136 249.506 236.338 242.568 249.718 233.729 Z" style="fill-rule: evenodd; fill: url(#gradient-3);" transform="matrix(-0.940305, -0.340333, 0.340333, -0.940305, 427.47537, 473.429652)"/>
+  <title>red-heart</title>
+  <text style="fill: rgb(247, 247, 247); font-family: &quot;Libre Franklin&quot;; font-size: 60px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, 28.391132, 4.955383)"><textPath xlink:href="#text-path-1">Keeb</textPath></text>
+  <text style="fill: rgb(247, 247, 247); font-family: &quot;Libre Franklin&quot;; font-size: 60px; font-weight: 700; white-space: pre;" transform="matrix(0.997529, -0.070273, 0.070273, 0.997529, -22.721537, -4.264799)"><textPath xlink:href="#text-path-2">Companion</textPath></text>
+</svg>

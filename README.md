@@ -2,7 +2,7 @@
 
 <p>
   <img 
-    src="imgs/png/logo_main2.png"
+    src="/media/imgs/png/main_readme/logo_main2.png"
     alt="KeebCompanion Logo"
   />
 </p>
@@ -75,20 +75,20 @@ For additional information on each of the web applications, please navigate to t
     Select 'Next' to create the password.
 
   <figure style="display: block; margin: 0 auto; width: 80%; margin-top: 10px;margin-bottom: 30px"> 
-    <img src="imgs/png/mysql_setup_auth.png" />
+    <img src="/media/imgs/png/main_readme/mysql_setup_auth.png" />
     <!-- <figcaption style="text-align: center; font-style: italic">Prompt to Create Password for 'root' in MySQL Installer</figcaption> -->
   </figure>
 
   - Create the password for 'root' in the following page and continue selecting 'Next' on the remaining pages of MySQL Installer.
 
   <figure style="display: block; margin: 0 auto; width: 80%; margin-top: 10px; margin-bottom: 30px"> 
-    <img src="imgs/png/mysql_root_pass.png" />
+    <img src="/media/imgs/png/main_readme/mysql_root_pass.png" />
     <!-- <figcaption style="text-align: center; font-style: italic">Page to Create Password for 'root' in MySQL Installer</figcaption> -->
   </figure>
 
   - After successfully installing MySQL Workbench, the home page of MySQL Workbench should contain a local connection instance under the user 'root' _(Highlighted in red below)_.
   <figure style="display: block; margin: 0 auto; width: 80%; margin-top: 10px; margin-bottom: 30px"> 
-    <img style = "box-shadow: 0 0 10px #00000040" src="imgs/png/mysql_success.png" />
+    <img style = "box-shadow: 0 0 10px #00000040" src="/media/imgs/png/main_readme/mysql_success.png" />
     <!-- <figcaption style="text-align: center; font-style: italic">Local Instance for 'root' Highlighted in Red</figcaption> -->
   </figure>
 
