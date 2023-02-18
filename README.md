@@ -14,9 +14,7 @@
   - [Background:](#background)
   - [The Web Applications:](#the-web-applications)
     - [1. KeebCollection](#1-keebcollection)
-    - [2. KeebSales](#2-keebsales)
-    - [3. KeebieGeebies](#3-keebiegeebies)
-    - [4. KeebTimer](#4-keebtimer)
+    - [2. KeebTimer](#2-keebtimer)
   - [System Requirements:](#system-requirements)
     - [1. Minimum hardware requirements for ReactJS](#1-minimum-hardware-requirements-for-reactjs)
     - [2. Installation of NodeJS](#2-installation-of-nodejs)
@@ -28,7 +26,7 @@
 
 Are you a mechanical keyboard enthusiast that has trouble managing their collection? What about managing your sales or purchases? Do you wish there were more specialized tools for this hobby? If so, then look no further!
 
-Introducing KeebCompanion, a collection of four web applications that can be used by mechanical keyboard enthusiasts and those that plan on entering the hobby. Below are brief descriptions of the four tools.
+Introducing KeebCompanion, a collection of two web applications that can be used by mechanical keyboard enthusiasts and those that plan on entering the hobby. Below are brief descriptions of the four tools.
 
 ## The Web Applications:
 
@@ -46,19 +44,7 @@ For additional information on each of the web applications, please navigate to t
 - Users can also view statistics for the items in the table.
 - <a href="https://github.com/jal004/KeebCompanion/tree/main/KeebCollection" target="_blank">Additional Information</a>
 
-### 2. KeebSales
-
-- preview of app here
-- description of app here
-- additional info (link to folder in repo)
-
-### 3. KeebieGeebies
-
-- preview of app here
-- description of app here
-- additional info (link to folder in repo)
-
-### 4. KeebTimer
+### 2. KeebTimer
 
 - preview of app here
 - description of app here
