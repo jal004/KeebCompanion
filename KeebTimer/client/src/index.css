@@ -1,0 +1,186 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* create color themes here; 
+use these variables in other CSS files to create a theme dependencies */
+/* default theme */
+:root {
+  --background: white;
+  --text-primary: black;
+  --text-secondary: white;
+  --table-primary: #6f737a;
+  --table-secondary: #f3f3f3;
+  --table-shadow: rgba(0, 0, 0, 0.15);
+  --add-btn: #4caf50;
+  --delete-btn: #f44336;
+  --edit-btn: #008cba;
+  --view-btn: #e7e7e7;
+  --select-primary: black;
+  --select-secondary: grey;
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: white;
+  --submit-hover: #45a049;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #008cba;
+  --theme-2: #6f737a;
+  --theme-3: #6f737a;
+  --theme-4: #6f737a;
+  --theme-5: #6f737a;
+  --home-bg: #dddddd;
+  --home-view: #008cba;
+}
+
+[data-theme="light"] {
+  --background: white;
+  --text-primary: black;
+  --text-secondary: white;
+  --table-primary: #6f737a;
+  --table-secondary: #f3f3f3;
+  --table-shadow: rgba(0, 0, 0, 0.15);
+  --add-btn: #4caf50;
+  --delete-btn: #f44336;
+  --edit-btn: #008cba;
+  --view-btn: #e7e7e7;
+  --select-primary: black;
+  --select-secondary: grey;
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: white;
+  --submit-hover: #45a049;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #008cba;
+  --theme-2: #6f737a;
+  --theme-3: #6f737a;
+  --theme-4: #6f737a;
+  --theme-5: #6f737a;
+  --home-bg: #dddddd;
+  --home-view: #008cba;
+}
+
+[data-theme="dark"] {
+  --background: #141414;
+  --text-primary: white;
+  --text-secondary: white;
+  --table-primary: #4e4e4e;
+  --table-secondary: #222222;
+  --table-shadow: rgba(160, 160, 160, 0.5);
+  --add-btn: #285e2a;
+  --delete-btn: #a11c12;
+  --edit-btn: #0d4b9b;
+  --view-btn: #a8a8a8;
+  --select-primary: white;
+  --select-secondary: #e6e6e6;
+  --select-background: white;
+  --input-border: #ccc;
+  --accent: #9b9b9b;
+  --submit-hover: #1f4921;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #6f737a;
+  --theme-2: #0d4b9b;
+  --theme-3: #6f737a;
+  --theme-4: #6f737a;
+  --theme-5: #6f737a;
+  --home-bg: #9b9b9b;
+  --home-view: #0d4b9b;
+}
+
+[data-theme="9009"] {
+  --background: #d8d2c3;
+  --text-primary: #171718;
+  --text-secondary: #171718;
+  --table-primary: #858171;
+  --table-secondary: #aca693;
+  --table-shadow: rgba(95, 95, 95, 0.5);
+  --add-btn: #768e72;
+  --delete-btn: #c87e74;
+  --edit-btn: #768e72;
+  --view-btn: #b8b8b8;
+  --select-primary: #171718;
+  --select-secondary: #686868;
+  --select-background: white;
+  --input-border: #aca693;
+  --accent: #dadada;
+  /* standard dark color hover */
+  /* --submit-hover: #62755f; */
+  --submit-hover: #c87e74;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #858171;
+  --theme-2: #858171;
+  --theme-3: #c87e74;
+  --theme-4: #858171;
+  --theme-5: #858171;
+  --home-bg: #dadada;
+  --home-view: #c87e74;
+}
+
+/* alphas: #dee3eb,
+   mods: #3e5d58,
+   accent: #92aba0
+ */
+
+[data-theme="botanical"] {
+  --background: #d3dfd9;
+  --text-primary: #3e5d58;
+  --text-secondary: #aac0b7;
+  --table-primary: #2d423f;
+  --table-secondary: #a3c0b2;
+  --table-shadow: rgba(95, 95, 95, 0.5);
+  --add-btn: #2d423f;
+  --delete-btn: #60746c;
+  --edit-btn: #4b706a;
+  --view-btn: #f1f0f0;
+  --select-primary: #3e5d58;
+  --select-secondary: grey;
+  --select-background: white;
+  --input-border: #3e5d58;
+  --accent: white;
+  --submit-hover: #42635d;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #2d423f;
+  --theme-2: #2d423f;
+  --theme-3: #2d423f;
+  --theme-4: #4b706a;
+  --theme-5: #2d423f;
+  --home-bg: #f1f0f0;
+  --home-view: #4b706a;
+}
+[data-theme="modo"] {
+  --background: #767a7d;
+  --text-primary: white;
+  --text-secondary: white;
+  --table-primary: #4e4e4e;
+  --table-secondary: #4e4f53;
+  --table-shadow: rgba(26, 26, 26, 0.2);
+  --add-btn: #82d9d1;
+  --delete-btn: #bb5666;
+  --edit-btn: #82d9d1;
+  --view-btn: #b8b8b8;
+  --select-primary: white;
+  --select-secondary: #d4d4d4;
+  --select-background: white;
+  --input-border: rgb(78, 79, 83);
+  --accent: #9b9b9b;
+  /* standard dark color hover */
+  /* --submit-hover: rgb(110, 180, 173); */
+  --submit-hover: #bb5666;
+  /* colors for selected and unselected theme buttons */
+  --theme-1: #4e4e4e;
+  --theme-2: #4e4e4e;
+  --theme-3: #4e4e4e;
+  --theme-4: #4e4e4e;
+  --theme-5: #bb5666;
+  --home-bg: #b8b8b8;
+  --home-view: #bb5666;
+}

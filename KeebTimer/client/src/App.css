@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+  color: var(--text-primary);
+  background-color: var(--background);
+  font-size: large;
+  font-weight: bold;
+  padding: 20px;
+  height: calc(100vh - 40px);
+  transition: all 0.5s;
+}
+
+#modoThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-5);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#botanicalThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-4);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#nineKnineThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-3);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#darkThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-2);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#defaultThemeBtn {
+  color: var(--text-secondary);
+  background-color: var(--theme-1);
+  float: right;
+  transition: all 0.5s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#themesHeader {
+  float: right;
+  margin-top: 18px;
+  margin-right: 20px;
+  color: var(--text-primary);
+}
+
+#logo {
+  height: 170px;
+  width: 170px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+}
