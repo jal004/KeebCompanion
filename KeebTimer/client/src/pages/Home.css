@@ -1,5 +1,5 @@
 .center {
-  margin-top: 160px;
+  margin-top: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,13 +47,13 @@
 .btn-item {
   background-color: var(--add-btn);
   font-size: 24px;
-  padding: 20px 10px;
-  margin: 15px 30px;
+  padding: 20px 24px;
+  margin: 15px 34px;
 }
 
 .btn-view {
   background-color: var(--home-view);
   font-size: 24px;
-  padding: 20px 10px;
+  padding: 20px 12px;
   margin: 4px 30px;
 }
