@@ -26,7 +26,7 @@
 
 Are you a mechanical keyboard enthusiast that has trouble managing their collection? Do you wish there were more specialized tools for this hobby? If so, then look no further!
 
-Introducing KeebCompanion, a collection of two web applications that can be used by mechanical keyboard enthusiasts and those that plan on entering the hobby. Below are brief descriptions of the four tools.
+Introducing KeebCompanion, a collection of two web applications that can be used by mechanical keyboard enthusiasts and those that plan on entering the hobby. Below are brief descriptions of the two tools.
 
 ## The Web Applications:
 
@@ -106,8 +106,6 @@ After cloning the repository:
    - The absolute paths to each of the four application directories are from the repository directory are:
      ```
      /KeebCompanion/KeebCollection
-     /KeebCompanion/KeebSales
-     /KeebCompanion/KeebieGeebies
      /KeebCompanion/KeebTimer
      ```
 3. Then, find the directory corresponding to the desired application on GitHub and follow the provided 'Setup' section on the README of that directory in order to connect MySQL to the application.
