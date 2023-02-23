@@ -1,8 +1,20 @@
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Timer.css";
 
 const Timer = () => {
+  // used for cleaning up before redirect if needed
+  const navigate = useNavigate();
+  // go back to home clean up;
+  // stops the current timer if it is running when exiting page
+  const goBackBtn = () => {
+    if (timerStatus.current === "started") {
+      window.clearInterval(interval.current);
+      timerStatus.current = "stopped";
+    }
+    navigate("/");
+  };
+
   const [count, setCount] = useState(0);
   // using references for vars to persist on re-renders
   // refs storing each UNPROCESSED unit of time
@@ -55,11 +67,11 @@ const Timer = () => {
     if (timerStatus.current === "stopped") {
       interval.current = window.setInterval(start, 1000);
       timerStatus.current = "started";
-      document.getElementById("startBtn").innerHTML = "Stop";
+      document.getElementById("startBtn").innerHTML = "Stop Timer";
     } else {
       window.clearInterval(interval.current);
       timerStatus.current = "stopped";
-      document.getElementById("startBtn").innerHTML = "Start";
+      document.getElementById("startBtn").innerHTML = "Start Timer";
     }
   };
 
@@ -67,7 +79,7 @@ const Timer = () => {
   const reset = () => {
     if (
       window.confirm(
-        "This will reset the timer and counter. Would you like to continue?"
+        "This will reset the counter AND the timer. Would you like to continue?"
       )
     ) {
       window.clearInterval(interval.current);
@@ -84,7 +96,7 @@ const Timer = () => {
       document.getElementById("timerMins").innerHTML = "00";
       document.getElementById("timerSecs").innerHTML = "00";
 
-      document.getElementById("startBtn").innerHTML = "Start";
+      document.getElementById("startBtn").innerHTML = "Start Timer";
 
       timerStatus.current = "stopped";
 
@@ -122,51 +134,68 @@ const Timer = () => {
   return (
     <div className="wrapper">
       <h1>Start New Timer</h1>
-      <div className="timerBody">
-        <h2>Storing Times For: {timeName}</h2>
-        <div className="display">
-          <p className="timerDisplay" id="timerHrs">
-            00
-          </p>
-          :
-          <p className="timerDisplay" id="timerMins">
-            00
-          </p>
-          :
-          <p className="timerDisplay" id="timerSecs">
-            00
-          </p>
+      <div className="body">
+        <div className="timerBody">
+          <h2>Storing Times For: {timeName}</h2>
+          <div className="display">
+            <p className="timerDisplay" id="timerHrs">
+              00
+            </p>
+            :
+            <p className="timerDisplay" id="timerMins">
+              00
+            </p>
+            :
+            <p className="timerDisplay" id="timerSecs">
+              00
+            </p>
+          </div>
+
+          <div className="timerBtns">
+            <button className="btn" id="startBtn" onClick={startStop}>
+              Start Timer
+            </button>
+          </div>
         </div>
 
-        <div className="timerBtns">
-          <button className="timer-btn" id="startBtn" onClick={startStop}>
-            Start
-          </button>
+        <div className="counterBody">
+          <h2 id="countDisplay">{count}</h2>
+          <div className="counterBtns">
+            <button
+              className="btn counter-btn"
+              id="incBtn"
+              onClick={incrementCount}
+            >
+              Increment
+            </button>
+            <button
+              className="btn counter-btn"
+              id="decBtn"
+              onClick={decrementCount}
+              // disables button if count is 0
+              disabled={count === 0}
+            >
+              Decrement
+            </button>
+            <button
+              className="btn counter-btn"
+              id="resetBtn"
+              onClick={reset}
+              disabled={count === 0}
+            >
+              Reset
+            </button>
+          </div>
         </div>
       </div>
-
-      <div className="counterBody">
-        <h2>{count}</h2>
-        <div className="counterBtns">
-          <button className="btn" onClick={incrementCount}>
-            Increment
-          </button>
-          <button
-            className="btn"
-            onClick={decrementCount}
-            // disables button if count is 0
-            disabled={count === 0}
-          >
-            Decrement
-          </button>
-          <button className="btn" onClick={reset} disabled={count === 0}>
-            Reset
-          </button>
-        </div>
+      <div className="navBtns">
+        <button className="btn nav-btn" id="backBtn" onClick={goBackBtn}>
+          Go Back to Home
+        </button>
+        <button className="btn nav-btn" id="submitBtn" onClick={goBackBtn}>
+          Finish New Timer
+        </button>
       </div>
-      <Link to="/">
-        <button className="btn">Go Back</button>
-      </Link>
     </div>
   );
 };

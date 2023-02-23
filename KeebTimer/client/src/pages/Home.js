@@ -8,13 +8,13 @@ const Home = () => {
   const navigate = useNavigate();
 
   const addTimePrompt = () => {
-    var timeName = prompt("Please enter a name for the item to be timed");
+    var timeName = prompt("Please enter a name for the item to be timed.");
     // checking if input is not empty, and not only whitespace
-    if (!!timeName?.trim()) {
+    if (timeName?.trim()) {
       localStorage.setItem("name", timeName);
       navigate("addTime");
     } else {
-      alert("Please enter a valid name");
+      alert("Please enter a valid name.");
     }
   };
 
