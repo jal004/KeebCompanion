@@ -8,11 +8,17 @@ const Timer = () => {
   // go back to home clean up;
   // stops the current timer if it is running when exiting page
   const goBackBtn = () => {
-    if (timerStatus.current === "started") {
-      window.clearInterval(interval.current);
-      timerStatus.current = "stopped";
+    if (
+      window.confirm(
+        "This timer will not be saved if you leave this page. Would you like to continue?"
+      )
+    ) {
+      if (timerStatus.current === "started") {
+        window.clearInterval(interval.current);
+        timerStatus.current = "stopped";
+      }
+      navigate("/");
     }
-    navigate("/");
   };
 
   const [count, setCount] = useState(0);

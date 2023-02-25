@@ -14,12 +14,8 @@ var db = mysql.createConnection({
   password: "password",
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello world!");
-});
-
-// displaying crud table on home page
-app.get("/api/get", (req, res) => {
+db.connect((err) => {
+  if (err) throw err;
   const sqlCreateDb = "CREATE DATABASE IF NOT EXISTS KeebCompanion";
   db.query(sqlCreateDb, (err, result) => {
     if (err) throw err;
@@ -38,13 +34,22 @@ app.get("/api/get", (req, res) => {
       )`;
       db.query(sqlCreateTable, (err, result) => {
         if (err) throw err;
-        const sqlGet = "SELECT * FROM collection";
-        db.query(sqlGet, (err, result) => {
-          if (err) throw err;
-          res.send(result);
-        });
+        console.log("Initialization completed!");
       });
     });
+  });
+});
+
+app.get("/", (req, res) => {
+  res.send("Hello world!");
+});
+
+// displaying crud table on home page
+app.get("/api/get", (req, res) => {
+  const sqlGet = "SELECT * FROM collection";
+  db.query(sqlGet, (err, result) => {
+    if (err) throw err;
+    res.send(result);
   });
 });
 
