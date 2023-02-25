@@ -45,19 +45,19 @@ function App() {
         alt="The KeebCompanion logo"
         id="logo"
       />
-      <button class="btn" id="modoThemeBtn" onClick={modoTheme}>
+      <button className="btn" id="modoThemeBtn" onClick={modoTheme}>
         Modern Dolch
       </button>
-      <button class="btn" id="botanicalThemeBtn" onClick={botanicalTheme}>
+      <button className="btn" id="botanicalThemeBtn" onClick={botanicalTheme}>
         Botanical
       </button>
-      <button class="btn" id="nineKnineThemeBtn" onClick={nineKnineTheme}>
+      <button className="btn" id="nineKnineThemeBtn" onClick={nineKnineTheme}>
         9009
       </button>
-      <button class="btn" id="darkThemeBtn" onClick={darkTheme}>
+      <button className="btn" id="darkThemeBtn" onClick={darkTheme}>
         Dark
       </button>
-      <button class="btn" id="defaultThemeBtn" onClick={lightTheme}>
+      <button className="btn" id="defaultThemeBtn" onClick={lightTheme}>
         Default
       </button>
       <h2 id="themesHeader"> Themes: </h2>
@@ -69,7 +69,7 @@ function App() {
             {/* The path attr is also the path in client side server */}
             {/* The element atr is the component that is displayed */}
             <Route exact path="/" element={<Home />} />
-            <Route path="/addTime" element={<Timer />} />
+            <Route path="/addTime/:name" element={<Timer />} />
             <Route path="/viewTimes" element={<ViewTimes />} />
             <Route path="/view/:id" element={<View />} />
           </Routes>

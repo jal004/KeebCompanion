@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import "./Timer.css";
 
 const Timer = () => {
@@ -10,7 +11,7 @@ const Timer = () => {
   const goBackBtn = () => {
     if (
       window.confirm(
-        "This timer will not be saved if you leave this page. Would you like to continue?"
+        "This timer will not be saved if you leave this page.\nWould you like to continue?"
       )
     ) {
       if (timerStatus.current === "started") {
@@ -21,17 +22,65 @@ const Timer = () => {
     }
   };
 
+  // prepopulating with saved time and count
+  const [savedTime, setSavedTime] = useState({});
+  const [savedCount, setSavedCount] = useState({});
+  const { name } = useParams();
+
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // getting saved time
+    axios.get(`http://localhost:5000/api/getTimeNew/${name}`).then((resp) => {
+      setSavedTime({ ...resp.data[0] });
+    });
+    // getting saved count
+    axios.get(`http://localhost:5000/api/getCountNew/${name}`).then((resp) => {
+      setSavedCount({ ...resp.data[0] });
+    });
+  }, [name]);
+
+  // assigning INITIAL VALUE of counter to most recently saved value for timer
+  // (HANDLING RETAINING COUNT WHEN GOING BACK FROM SUBMIT FORM)
+  useEffect(() => {
+    setCount(savedCount.count_new);
+  }, [savedCount]);
+
+  console.log(savedTime);
+  console.log(savedCount);
+  console.log(savedTime.hr_new);
+  console.log(savedTime.min_new);
+  console.log(savedTime.sec_new);
+  console.log(savedCount.count_new);
+
   // using references for vars to persist on re-renders
   // refs storing each UNPROCESSED unit of time
   let hours = useRef(0);
   let minutes = useRef(0);
   let seconds = useRef(0);
 
+  // assign INITIAL VALUE of time units to most recently saved value for timer
+  // (HANDLING RETAINING TIME WHEN GOING BACK FROM SUBMIT FORM)
+  // NOTE: this is called every time a reset occurs, which will
+  //       make it seem like the time is still starting at the existing time,
+  //       but when we implement reset to delete ALL laps, it should behave correctly
+  hours.current = savedTime.hr_new;
+  minutes.current = savedTime.min_new;
+  seconds.current = savedTime.sec_new;
+
   // refs storing each PROCESSED unit of time
   let displayHrs = useRef("");
   let displayMins = useRef("");
   let displaySecs = useRef("");
+
+  // processing initial times for display
+  // (HANDLING RETAINING TIME WHEN GOING BACK FROM SUBMIT FORM)
+  displayHrs.current = hours.current < 10 ? "0" + hours.current : hours.current;
+  displayMins.current =
+    minutes.current < 10 ? "0" + minutes.current : minutes.current;
+  displaySecs.current =
+    seconds.current < 10 ? "0" + seconds.current : seconds.current;
+
   let lapNow = useRef(null);
 
   // ref storing timer functionality variables
@@ -85,7 +134,7 @@ const Timer = () => {
   const reset = () => {
     if (
       window.confirm(
-        "This will reset the counter AND the timer. Would you like to continue?"
+        "This will reset the counter AND the timer.\nWould you like to continue?"
       )
     ) {
       window.clearInterval(interval.current);
@@ -94,13 +143,13 @@ const Timer = () => {
       minutes.current = 0;
       seconds.current = 0;
 
-      displayHrs.current = 0;
-      displayMins.current = 0;
-      displaySecs.current = 0;
+      displayHrs.current = "00";
+      displayMins.current = "00";
+      displaySecs.current = "00";
 
-      document.getElementById("timerHrs").innerHTML = "00";
-      document.getElementById("timerMins").innerHTML = "00";
-      document.getElementById("timerSecs").innerHTML = "00";
+      document.getElementById("timerHrs").innerHTML = displayHrs.current;
+      document.getElementById("timerMins").innerHTML = displayMins.current;
+      document.getElementById("timerSecs").innerHTML = displaySecs.current;
 
       document.getElementById("startBtn").innerHTML = "Start Timer";
 
@@ -142,18 +191,18 @@ const Timer = () => {
       <h1>Start New Timer</h1>
       <div className="body">
         <div className="timerBody">
-          <h2>Storing Times For: {timeName}</h2>
+          <h2 id="nameDisplay">Storing Times For: {timeName}</h2>
           <div className="display">
             <p className="timerDisplay" id="timerHrs">
-              00
+              {displayHrs.current}
             </p>
             :
             <p className="timerDisplay" id="timerMins">
-              00
+              {displayMins.current}
             </p>
             :
             <p className="timerDisplay" id="timerSecs">
-              00
+              {displaySecs.current}
             </p>
           </div>
 

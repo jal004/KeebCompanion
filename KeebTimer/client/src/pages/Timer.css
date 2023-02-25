@@ -38,7 +38,7 @@ p {
   flex-direction: column;
   align-items: center;
   background-color: var(--home-bg);
-  height: 470px;
+  height: 520px;
   width: 500px;
   border-radius: 25px;
   box-shadow: 0 0 20px var(--table-shadow);
@@ -100,4 +100,18 @@ p {
 #resetBtn:disabled {
   background-color: var(--timer-reset-disabled);
   cursor: default;
+}
+
+/* adding auto line break to timer name displayed */
+#nameDisplay {
+  width: 450px;
+  height: 75px;
+  overflow-wrap: break-word;
+}
+
+/* timer display container */
+.timerBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -8,13 +8,25 @@ const Home = () => {
   const navigate = useNavigate();
 
   const addTimePrompt = () => {
-    var timeName = prompt("Please enter a name for the item to be timed.");
-    // checking if input is not empty, and not only whitespace
-    if (timeName?.trim()) {
-      localStorage.setItem("name", timeName);
-      navigate("addTime");
-    } else {
+    var timeName = prompt(
+      "Please enter a name for the item to be timed (50 character limit)."
+    );
+
+    // checking if input name is not empty, and not only whitespace
+    var nameLen = timeName.trim().length;
+    if (nameLen === 0) {
       alert("Please enter a valid name.");
+    }
+    // checking if input name exceeds character limit
+    else if (nameLen > 50) {
+      alert(
+        `Please enter a name that is at most 50 characters.\nThe current name is ${nameLen} characters`
+      );
+    }
+    // input name is valid
+    else {
+      localStorage.setItem("name", timeName);
+      navigate(`addTime/${timeName}`);
     }
   };
 

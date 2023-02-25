@@ -33,7 +33,7 @@ db.connect((err) => {
       // times table creation
       const sqlCreateTable = `CREATE TABLE IF NOT EXISTS times (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(100) NOT NULL,
+        name VARCHAR(50) NOT NULL,
         total_time TIME,
         count INT,
         additional_notes VARCHAR(255),
@@ -46,7 +46,7 @@ db.connect((err) => {
         const sqlCreateStats = `CREATE TABLE IF NOT EXISTS timer_stats (
           id INT PRIMARY KEY AUTO_INCREMENT,
           times_id INT NOT NULL,
-          name VARCHAR(100) NOT NULL,
+          name VARCHAR(50) NOT NULL,
           curr_time TIME,
           created_at TIMESTAMP DEFAULT NOW(),
           FOREIGN KEY (times_id) REFERENCES times(id) ON DELETE CASCADE
@@ -74,9 +74,9 @@ app.get("/api/getTest", (req, res) => {
 app.get("/api/getTimeNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlGetTimeNew = `SELECT 
-    IFNULL(HOUR(curr_time), 0),
-    IFNULL(MINUTE(curr_time), 0),
-    IFNULL(SECOND(curr_time), 0),
+    IFNULL(HOUR(curr_time), 0) AS hr_new,
+    IFNULL(MINUTE(curr_time), 0) AS min_new,
+    IFNULL(SECOND(curr_time), 0) AS sec_new
   FROM timer_stats
   WHERE
     times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)
@@ -90,10 +90,10 @@ app.get("/api/getTimeNew/:name", (req, res) => {
 // getting the count
 app.get("/api/getCountNew/:name", (req, res) => {
   const { name } = req.params;
-  const sqlGetCountNew = `SELECT COUNT(*) FROM timer_stats
+  const sqlGetCountNew = `SELECT COUNT(*) AS count_new FROM timer_stats
   WHERE 
     times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)`;
-  db.query(sqlGetCountNew, name, (req, result) => {
+  db.query(sqlGetCountNew, name, (err, result) => {
     if (err) throw err;
     res.send(result);
   });
@@ -104,9 +104,9 @@ app.get("/api/getCountNew/:name", (req, res) => {
 app.get("/api/getTimeExists/:id", (req, res) => {
   const { id } = req.params;
   const sqlGetTimeExists = `SELECT 
-    IFNULL(HOUR(curr_time), 0),
-    IFNULL(MINUTE(curr_time), 0),
-    IFNULL(SECOND(curr_time), 0),
+    IFNULL(HOUR(curr_time), 0) AS hr_exists,
+    IFNULL(MINUTE(curr_time), 0) AS min_exists,
+    IFNULL(SECOND(curr_time), 0) AS sec_exists
   FROM timer_stats
   WHERE
     times_id = ?
@@ -120,7 +120,7 @@ app.get("/api/getTimeExists/:id", (req, res) => {
 // getting the count
 app.get("/api/getCountExists/:id", (req, res) => {
   const { id } = req.params;
-  const sqlGetCountExists = `SELECT COUNT(*) FROM timer_stats
+  const sqlGetCountExists = `SELECT COUNT(*) AS count_exists FROM timer_stats
   WHERE 
     times_id = ?`;
   db.query(sqlGetCountExists, id, (req, result) => {
@@ -132,6 +132,23 @@ app.get("/api/getCountExists/:id", (req, res) => {
 // TEST QUERIES:
 // NOTE: these queries are for testing if dynamic queries can be applied to
 //       variables in sub queries
+
+// it works!
+// app.get("/api/getTimeNewTest", (req, res) => {
+//   const name = "testing";
+//   const sqlGetTimeNew = `SELECT
+//     IFNULL(HOUR(curr_time), 0),
+//     IFNULL(MINUTE(curr_time), 0),
+//     IFNULL(SECOND(curr_time), 0)
+//   FROM timer_stats
+//   WHERE
+//     times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)
+//   ORDER BY created_at DESC LIMIT 1`;
+//   db.query(sqlGetTimeNew, name, (err, result) => {
+//     if (err) throw err;
+//     res.send(result);
+//   });
+// });
 
 app.listen(5000, function () {
   console.log("Server running on port 5000!");

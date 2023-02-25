@@ -155,7 +155,7 @@ const AddEdit = () => {
           id="additional_notes"
           name="additional_notes"
           rows="6"
-          maxlength="255"
+          maxLength="255"
           placeholder="Additional notes for the item (255 character limit)"
           value={additional_notes}
           onChange={handleInputChange}
