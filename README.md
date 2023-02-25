@@ -103,7 +103,7 @@ After cloning the repository:
 
 1. Open the directory of the repository and a terminal on your desired text editor.
 2. Using your terminal, navigate to the directory of the application that you would like to run.
-   - The absolute paths to each of the four application directories are from the repository directory are:
+   - The absolute paths to each of the two application directories from the repository directory are:
      ```
      /KeebCompanion/KeebCollection
      /KeebCompanion/KeebTimer

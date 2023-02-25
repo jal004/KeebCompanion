@@ -70,20 +70,48 @@ app.get("/api/getTest", (req, res) => {
 });
 
 // NEW TIMER QUERIES (i.e. based on id of most recent of name)
-// getting most recent lap
+// 2/25/23: new query to handle new timer values (i.e. no existing laps)
 app.get("/api/getTimeNew/:name", (req, res) => {
   const { name } = req.params;
-  const sqlGetTimeNew = `SELECT 
-    IFNULL(HOUR(curr_time), 0) AS hr_new,
-    IFNULL(MINUTE(curr_time), 0) AS min_new,
-    IFNULL(SECOND(curr_time), 0) AS sec_new
-  FROM timer_stats
-  WHERE
+  // creating views for each of the desired columns
+  // (queries will always return a value, even if none exist (null))
+  // hour
+  const sqlViewHrNew = `CREATE OR REPLACE VIEW view_hr_new AS 
+  SELECT HOUR(curr_time) FROM timer_stats
+  WHERE 
     times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)
   ORDER BY created_at DESC LIMIT 1`;
-  db.query(sqlGetTimeNew, name, (err, result) => {
+  // minute
+  const sqlViewMinNew = `CREATE OR REPLACE VIEW view_min_new AS 
+  SELECT MINUTE(curr_time) FROM timer_stats
+  WHERE 
+    times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)
+  ORDER BY created_at DESC LIMIT 1`;
+  // second
+  const sqlViewSecNew = `CREATE OR REPLACE VIEW view_sec_new AS 
+  SELECT SECOND(curr_time) FROM timer_stats
+  WHERE 
+    times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)
+  ORDER BY created_at DESC LIMIT 1`;
+  // creating views
+  db.query(sqlViewHrNew, name, (err, result) => {
     if (err) throw err;
-    res.send(result);
+    db.query(sqlViewMinNew, name, (err, result) => {
+      if (err) throw err;
+      db.query(sqlViewSecNew, name, (err, result) => {
+        if (err) throw err;
+        // using views to find existing values, or return 0 otherwise
+        const sqlGetTimeNew = `SELECT 
+        IFNULL((SELECT * FROM view_hr_new), 0) AS hr_new,
+        IFNULL((SELECT * FROM view_min_new), 0) AS min_new,
+        IFNULL((SELECT * FROM view_sec_new), 0) AS sec_new
+        `;
+        db.query(sqlGetTimeNew, (err, result) => {
+          if (err) throw err;
+          res.send(result);
+        });
+      });
+    });
   });
 });
 

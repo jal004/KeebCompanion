@@ -25,6 +25,8 @@ const Timer = () => {
   // prepopulating with saved time and count
   const [savedTime, setSavedTime] = useState({});
   const [savedCount, setSavedCount] = useState({});
+  // allows us to access the value in the URL following the '/';
+  // we have to specify this value with a ':' prepended in the path attr in App.js
   const { name } = useParams();
 
   const [count, setCount] = useState(0);
@@ -46,12 +48,13 @@ const Timer = () => {
     setCount(savedCount.count_new);
   }, [savedCount]);
 
-  console.log(savedTime);
-  console.log(savedCount);
-  console.log(savedTime.hr_new);
-  console.log(savedTime.min_new);
-  console.log(savedTime.sec_new);
-  console.log(savedCount.count_new);
+  // DEBUG
+  // console.log(savedTime);
+  // console.log(savedCount);
+  // console.log(savedTime.hr_new);
+  // console.log(savedTime.min_new);
+  // console.log(savedTime.sec_new);
+  // console.log(savedCount.count_new);
 
   // using references for vars to persist on re-renders
   // refs storing each UNPROCESSED unit of time
@@ -61,12 +64,11 @@ const Timer = () => {
 
   // assign INITIAL VALUE of time units to most recently saved value for timer
   // (HANDLING RETAINING TIME WHEN GOING BACK FROM SUBMIT FORM)
-  // NOTE: this is called every time a reset occurs, which will
-  //       make it seem like the time is still starting at the existing time,
-  //       but when we implement reset to delete ALL laps, it should behave correctly
-  hours.current = savedTime.hr_new;
-  minutes.current = savedTime.min_new;
-  seconds.current = savedTime.sec_new;
+  useEffect(() => {
+    hours.current = savedTime.hr_new;
+    minutes.current = savedTime.min_new;
+    seconds.current = savedTime.sec_new;
+  }, [savedTime]);
 
   // refs storing each PROCESSED unit of time
   let displayHrs = useRef("");
@@ -232,12 +234,7 @@ const Timer = () => {
             >
               Decrement
             </button>
-            <button
-              className="btn counter-btn"
-              id="resetBtn"
-              onClick={reset}
-              disabled={count === 0}
-            >
+            <button className="btn counter-btn" id="resetBtn" onClick={reset}>
               Reset
             </button>
           </div>
