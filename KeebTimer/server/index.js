@@ -60,17 +60,8 @@ db.connect((err) => {
   });
 });
 
-// test query
-app.get("/api/getTest", (req, res) => {
-  const sqlTest = "SELECT * FROM times";
-  db.query(sqlTest, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
-});
-
 // NEW TIMER QUERIES (i.e. based on id of most recent of name)
-// 2/25/23: new query to handle new timer values (i.e. no existing laps)
+// 2/25/23: correct query to handle new timer values (i.e. no existing laps)
 app.get("/api/getTimeNew/:name", (req, res) => {
   const { name } = req.params;
   // creating views for each of the desired columns
@@ -177,6 +168,35 @@ app.get("/api/getCountExists/:id", (req, res) => {
 //     res.send(result);
 //   });
 // });
+
+// inserting new timer into times
+app.post("/api/post", (req, res) => {
+  // THIS NAME HAS TO MATCH ARG IN AXIOS POST
+  const { timeName } = req.body;
+  const sqlInsertNew = `INSERT INTO times SET 
+  name = ?, total_time = '00:00:00', count = 0`;
+  db.query(sqlInsertNew, [timeName], (err, result) => {
+    if (err) throw err;
+    // NOTE: we have to send a response otherwise the app will crash
+    //       after the browser waits for 6 or more pending requests
+
+    // this response (status 200) indicates successful request
+    res.status(200).send();
+  });
+});
+
+// going back to home from new timer page (delete the curr timer in times)
+app.delete("/api/deleteTimeNew/:name", (req, res) => {
+  const { name } = req.params;
+  const sqlDeleteTimeNew = `DELETE FROM times
+  WHERE 
+    name = ? ORDER BY created_at DESC LIMIT 1`;
+  db.query(sqlDeleteTimeNew, name, (err, result) => {
+    if (err) throw err;
+    // this response (status 200) indicates successful request
+    res.status(200).send();
+  });
+});
 
 app.listen(5000, function () {
   console.log("Server running on port 5000!");

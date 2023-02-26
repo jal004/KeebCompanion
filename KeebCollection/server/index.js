@@ -74,6 +74,8 @@ app.post("/api/post", (req, res) => {
     [item_name, quantity, item_type, price, additional_notes],
     (err, result) => {
       if (err) throw err;
+      // this response (status 200) indicates successful request
+      res.status(200).send();
     }
   );
 });
@@ -101,6 +103,8 @@ app.delete("/api/remove/:id", (req, res) => {
   const sqlRemove = "DELETE FROM collection WHERE id = ?";
   db.query(sqlRemove, id, (err, result) => {
     if (err) throw err;
+    // this response (status 200) indicates successful request
+    res.status(200).send();
   });
 });
 
@@ -168,6 +172,8 @@ app.delete("/api/removeAll", (req, res) => {
   const sqlRemove = "DELETE FROM collection";
   db.query(sqlRemove, (err, result) => {
     if (err) throw err;
+    // this response (status 200) indicates successful request
+    res.status(200).send();
   });
 });
 

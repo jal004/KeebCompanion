@@ -8,29 +8,44 @@ const Timer = () => {
   const navigate = useNavigate();
   // go back to home clean up;
   // stops the current timer if it is running when exiting page
-  const goBackBtn = () => {
-    if (
-      window.confirm(
-        "This timer will not be saved if you leave this page.\nWould you like to continue?"
-      )
-    ) {
-      if (timerStatus.current === "started") {
-        window.clearInterval(interval.current);
-        timerStatus.current = "stopped";
-      }
-      navigate("/");
-    }
-  };
 
   // prepopulating with saved time and count
   const [savedTime, setSavedTime] = useState({});
   const [savedCount, setSavedCount] = useState({});
+
   // allows us to access the value in the URL following the '/';
   // we have to specify this value with a ':' prepended in the path attr in App.js
   const { name } = useParams();
 
   const [count, setCount] = useState(0);
 
+  // using references for vars to persist on re-renders
+  // refs storing each UNPROCESSED unit of time
+  let hours = useRef(0);
+  let minutes = useRef(0);
+  let seconds = useRef(0);
+
+  // refs storing each PROCESSED unit of time
+  let displayHrs = useRef("");
+  let displayMins = useRef("");
+  let displaySecs = useRef("");
+
+  const goBackBtn = () => {
+    if (
+      window.confirm(
+        "This timer will not be saved if you leave this page.\nWould you like to continue?"
+      )
+    ) {
+      // stopping the timer if it is still running before going back
+      if (timerStatus.current === "started") {
+        window.clearInterval(interval.current);
+        timerStatus.current = "stopped";
+      }
+      // deleting the current timer
+      axios.delete(`http://localhost:5000/api/deleteTimeNew/${name}`);
+      navigate("/");
+    }
+  };
   useEffect(() => {
     // getting saved time
     axios.get(`http://localhost:5000/api/getTimeNew/${name}`).then((resp) => {
@@ -56,12 +71,6 @@ const Timer = () => {
   // console.log(savedTime.sec_new);
   // console.log(savedCount.count_new);
 
-  // using references for vars to persist on re-renders
-  // refs storing each UNPROCESSED unit of time
-  let hours = useRef(0);
-  let minutes = useRef(0);
-  let seconds = useRef(0);
-
   // assign INITIAL VALUE of time units to most recently saved value for timer
   // (HANDLING RETAINING TIME WHEN GOING BACK FROM SUBMIT FORM)
   useEffect(() => {
@@ -69,11 +78,6 @@ const Timer = () => {
     minutes.current = savedTime.min_new;
     seconds.current = savedTime.sec_new;
   }, [savedTime]);
-
-  // refs storing each PROCESSED unit of time
-  let displayHrs = useRef("");
-  let displayMins = useRef("");
-  let displaySecs = useRef("");
 
   // processing initial times for display
   // (HANDLING RETAINING TIME WHEN GOING BACK FROM SUBMIT FORM)
@@ -88,9 +92,6 @@ const Timer = () => {
   // ref storing timer functionality variables
   let timerStatus = useRef("stopped");
   let interval = useRef(null);
-
-  // name of current item being added
-  const timeName = localStorage.getItem("name");
 
   // function to increment times; called in startStop function
   const start = () => {
@@ -193,7 +194,7 @@ const Timer = () => {
       <h1>Start New Timer</h1>
       <div className="body">
         <div className="timerBody">
-          <h2 id="nameDisplay">Storing Times For: {timeName}</h2>
+          <h2 id="nameDisplay">Storing Times For: {name}</h2>
           <div className="display">
             <p className="timerDisplay" id="timerHrs">
               {displayHrs.current}

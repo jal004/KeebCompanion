@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 import "./Home.css";
 // import { toast } from "react-toastify";
 // import axios from "axios";
@@ -25,7 +26,8 @@ const Home = () => {
     }
     // input name is valid
     else {
-      localStorage.setItem("name", timeName);
+      // add timer to times table
+      axios.post("http://localhost:5000/api/post", { timeName });
       navigate(`addTime/${timeName}`);
     }
   };
