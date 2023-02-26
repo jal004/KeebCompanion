@@ -30,22 +30,6 @@ const Timer = () => {
   let displayMins = useRef("");
   let displaySecs = useRef("");
 
-  const goBackBtn = () => {
-    if (
-      window.confirm(
-        "This timer will not be saved if you leave this page.\nWould you like to continue?"
-      )
-    ) {
-      // stopping the timer if it is still running before going back
-      if (timerStatus.current === "started") {
-        window.clearInterval(interval.current);
-        timerStatus.current = "stopped";
-      }
-      // deleting the current timer
-      axios.delete(`http://localhost:5000/api/deleteTimeNew/${name}`);
-      navigate("/");
-    }
-  };
   useEffect(() => {
     // getting saved time
     axios.get(`http://localhost:5000/api/getTimeNew/${name}`).then((resp) => {
@@ -94,6 +78,23 @@ const Timer = () => {
   let interval = useRef(null);
 
   // function to increment times; called in startStop function
+  const goBackBtn = () => {
+    if (
+      window.confirm(
+        "This timer will not be saved if you leave this page.\nWould you like to continue?"
+      )
+    ) {
+      // stopping the timer if it is still running before going back
+      if (timerStatus.current === "started") {
+        window.clearInterval(interval.current);
+        timerStatus.current = "stopped";
+      }
+      // deleting the current timer
+      axios.delete(`http://localhost:5000/api/deleteTimeNew/${name}`);
+      navigate("/");
+    }
+  };
+
   const start = () => {
     seconds.current++;
     // nested cond to increment other units of time
@@ -179,14 +180,22 @@ const Timer = () => {
   // counter functions
   const incrementCount = () => {
     setCount((prevCount) => prevCount + 1);
+    const currTime = `${displayHrs.current}:${displayMins.current}:${displaySecs.current}`;
+    const timerName = name;
+    axios.post("http://localhost:5000/api/incrementNew", {
+      timerName,
+      currTime,
+    });
   };
 
   const decrementCount = () => {
     setCount((prevCount) => prevCount - 1);
+    axios.delete(`http://localhost:5000/api/decrementNew/${name}`);
   };
 
   const resetCount = () => {
     setCount(0);
+    axios.delete(`http://localhost:5000/api/resetNew/${name}`);
   };
 
   return (

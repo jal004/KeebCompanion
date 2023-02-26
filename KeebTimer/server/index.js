@@ -60,8 +60,8 @@ db.connect((err) => {
   });
 });
 
-// NEW TIMER QUERIES (i.e. based on id of most recent of name)
-// 2/25/23: correct query to handle new timer values (i.e. no existing laps)
+// 1. START NEW TIMER INITIAL VALUE QUERIES (i.e. based on id of most recent of name)
+// 1.1. correct query to handle new timer values (i.e. no existing laps)
 app.get("/api/getTimeNew/:name", (req, res) => {
   const { name } = req.params;
   // creating views for each of the desired columns
@@ -106,7 +106,7 @@ app.get("/api/getTimeNew/:name", (req, res) => {
   });
 });
 
-// getting the count
+// 1.2. getting the count
 app.get("/api/getCountNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlGetCountNew = `SELECT COUNT(*) AS count_new FROM timer_stats
@@ -118,8 +118,8 @@ app.get("/api/getCountNew/:name", (req, res) => {
   });
 });
 
-// EXISTING TIMER QUERIES (i.e. based on times id)
-// getting most recent lap
+// 2. SAVED TIMER QUERIES (i.e. based on passed times id)
+// 2.1. getting most recent lap
 app.get("/api/getTimeExists/:id", (req, res) => {
   const { id } = req.params;
   const sqlGetTimeExists = `SELECT 
@@ -136,13 +136,13 @@ app.get("/api/getTimeExists/:id", (req, res) => {
   });
 });
 
-// getting the count
+// 2.2. getting the count
 app.get("/api/getCountExists/:id", (req, res) => {
   const { id } = req.params;
   const sqlGetCountExists = `SELECT COUNT(*) AS count_exists FROM timer_stats
   WHERE 
     times_id = ?`;
-  db.query(sqlGetCountExists, id, (req, result) => {
+  db.query(sqlGetCountExists, id, (err, result) => {
     if (err) throw err;
     res.send(result);
   });
@@ -169,7 +169,7 @@ app.get("/api/getCountExists/:id", (req, res) => {
 //   });
 // });
 
-// inserting new timer into times
+// 3. inserting new timer into times
 app.post("/api/post", (req, res) => {
   // THIS NAME HAS TO MATCH ARG IN AXIOS POST
   const { timeName } = req.body;
@@ -185,7 +185,7 @@ app.post("/api/post", (req, res) => {
   });
 });
 
-// going back to home from new timer page (delete the curr timer in times)
+// 4. going back to home from new timer page (delete the curr timer in times)
 app.delete("/api/deleteTimeNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlDeleteTimeNew = `DELETE FROM times
@@ -194,6 +194,46 @@ app.delete("/api/deleteTimeNew/:name", (req, res) => {
   db.query(sqlDeleteTimeNew, name, (err, result) => {
     if (err) throw err;
     // this response (status 200) indicates successful request
+    res.status(200).send();
+  });
+});
+
+// 5. START NEW TIMER COUNTER FUNCTIONS; i.e. get id based on most recent of name
+// 5.1. increment counter (add row into timer_stats)
+app.post("/api/incrementNew", (req, res) => {
+  const { timerName, currTime } = req.body;
+  const sqlIncrementNew = `INSERT INTO timer_stats SET
+    name = '${timerName}', 
+    times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1),
+    curr_time = ?`;
+  db.query(sqlIncrementNew, [timerName, currTime], (err, result) => {
+    if (err) throw err;
+    res.status(200).send();
+  });
+});
+
+// 5.2. decrement counter (remove most recent row with times_id from timer_stats)
+// NOTE: delete requests must use req.params (i.e. path vars); req.body is ignored
+app.delete("/api/decrementNew/:name", (req, res) => {
+  const { name } = req.params;
+  const sqlDecrementNew = `DELETE FROM timer_stats 
+  WHERE 
+    times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)
+  ORDER BY created_at DESC LIMIT 1`;
+  db.query(sqlDecrementNew, name, (err, result) => {
+    if (err) throw err;
+    res.status(200).send();
+  });
+});
+
+// 5.3. reset counter (remove ALL rows from timer_stats)
+app.delete("/api/resetNew/:name", (req, res) => {
+  const { name } = req.params;
+  const sqlResetNew = `DELETE FROM timer_stats 
+  WHERE 
+    times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1);`;
+  db.query(sqlResetNew, name, (err, result) => {
+    if (err) throw err;
     res.status(200).send();
   });
 });
