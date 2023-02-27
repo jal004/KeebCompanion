@@ -28,7 +28,7 @@ const Home = () => {
     else {
       // add timer to times table
       axios.post("http://localhost:5000/api/post", { timeName });
-      navigate(`addTime/${timeName}`);
+      navigate(`newTimer/${timeName}`);
     }
   };
 

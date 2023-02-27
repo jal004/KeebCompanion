@@ -71,30 +71,12 @@ const Timer = () => {
   displaySecs.current =
     seconds.current < 10 ? "0" + seconds.current : seconds.current;
 
-  let lapNow = useRef(null);
-
   // ref storing timer functionality variables
   let timerStatus = useRef("stopped");
   let interval = useRef(null);
 
-  // function to increment times; called in startStop function
-  const goBackBtn = () => {
-    if (
-      window.confirm(
-        "This timer will not be saved if you leave this page.\nWould you like to continue?"
-      )
-    ) {
-      // stopping the timer if it is still running before going back
-      if (timerStatus.current === "started") {
-        window.clearInterval(interval.current);
-        timerStatus.current = "stopped";
-      }
-      // deleting the current timer
-      axios.delete(`http://localhost:5000/api/deleteTimeNew/${name}`);
-      navigate("/");
-    }
-  };
-
+  // helper function that increments the timer
+  // and processes for display on each call; called by startStop()
   const start = () => {
     seconds.current++;
     // nested cond to increment other units of time
@@ -163,21 +145,8 @@ const Timer = () => {
     }
   };
 
-  // lap function
-  const lap = () => {
-    // edge case of lapping after reset without start timer
-    if (hours === 0 && minutes === 0 && seconds === 0) {
-      lapNow = "00 : 00 : 00";
-    }
-    // standard behavior
-    else {
-      lapNow = displayHrs + " : " + displayMins + " : " + displaySecs;
-    }
-    document.getElementById("lapRecord").innerHTML =
-      document.getElementById("lapRecord").innerHTML + "<p>" + lapNow + "</p>";
-  };
-
   // counter functions
+  // increment counter
   const incrementCount = () => {
     setCount((prevCount) => prevCount + 1);
     const currTime = `${displayHrs.current}:${displayMins.current}:${displaySecs.current}`;
@@ -188,14 +157,45 @@ const Timer = () => {
     });
   };
 
+  // decrement counter
   const decrementCount = () => {
     setCount((prevCount) => prevCount - 1);
     axios.delete(`http://localhost:5000/api/decrementNew/${name}`);
   };
 
+  // helper function called in reset() function
   const resetCount = () => {
     setCount(0);
     axios.delete(`http://localhost:5000/api/resetNew/${name}`);
+  };
+
+  // function that cleans up timer data when the user goes back to home
+  const goBackBtn = () => {
+    if (
+      window.confirm(
+        "This timer will not be saved if you leave this page.\nWould you like to continue?"
+      )
+    ) {
+      // stopping the timer if it is still running before going back
+      if (timerStatus.current === "started") {
+        window.clearInterval(interval.current);
+        timerStatus.current = "stopped";
+      }
+      // deleting the current timer
+      axios.delete(`http://localhost:5000/api/deleteTimeNew/${name}`);
+      navigate("/");
+    }
+  };
+
+  // function that cleans up when user finishes the timer
+  const finishTimerBtn = () => {
+    // stopping the timer if it is still running before redirecting to submission page
+    if (timerStatus.current === "started") {
+      window.clearInterval(interval.current);
+      timerStatus.current = "stopped";
+    }
+    // redirect to submission page
+    navigate(`/addNewTimer/${name}`);
   };
 
   return (
@@ -254,7 +254,7 @@ const Timer = () => {
         <button className="btn nav-btn" id="backBtn" onClick={goBackBtn}>
           Go Back to Home
         </button>
-        <button className="btn nav-btn" id="submitBtn" onClick={goBackBtn}>
+        <button className="btn nav-btn" id="submitBtn" onClick={finishTimerBtn}>
           Finish New Timer
         </button>
       </div>

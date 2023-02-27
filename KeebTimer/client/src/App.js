@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import useLocalStorage from "use-local-storage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Home from "./pages/Home";
 import Timer from "./pages/Timer";
 import View from "./pages/View";
 import ViewTimes from "./pages/ViewTimes";
-import useLocalStorage from "use-local-storage";
+import FinishNewTimer from "./pages/FinishNewTimer";
+import ViewDetails from "./pages/ViewDetails";
+import EditTimer from "./pages/EditTimer";
+import FinishExistingTimer from "./pages/FinishExistingTimer";
 
 function App() {
   // creating themes for app
@@ -68,10 +72,23 @@ function App() {
             {/* The path attr is used in the Link tag of the btns in Home.js */}
             {/* The path attr is also the path in client side server */}
             {/* The element atr is the component that is displayed */}
+
+            {/* home page */}
             <Route exact path="/" element={<Home />} />
-            <Route path="/addTime/:name" element={<Timer />} />
+            {/* start new timer page */}
+            <Route path="/newTimer/:name" element={<Timer />} />
+            {/* timer page for existing time */}
+            <Route path="/editTimer/:id" element={<EditTimer />} />
+            {/* view saved times CRUD page */}
             <Route path="/viewTimes" element={<ViewTimes />} />
+            {/* view timer in CRUD page */}
             <Route path="/view/:id" element={<View />} />
+            {/* view laps for timer in CRUD page */}
+            <Route path="/viewDetails/:id" element={<ViewDetails />} />
+            {/* submission for new timer */}
+            <Route path="/addNewTimer/:name" element={<FinishNewTimer />} />
+            {/* submission for existing timer */}
+            <Route path="/updateTimer/:id" element={<FinishExistingTimer />} />
           </Routes>
         </div>
       </BrowserRouter>
