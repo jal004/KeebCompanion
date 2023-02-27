@@ -169,9 +169,9 @@ app.get("/api/getCountExists/:id", (req, res) => {
 //   });
 // });
 
-// 3. inserting new timer into times
+// 3. INSERTING NEW TIMER INTO TIMES (i.e. start new timer initialization)
 app.post("/api/post", (req, res) => {
-  // THIS NAME HAS TO MATCH ARG IN AXIOS POST
+  // THIS NAME HAS TO MATCH ARG IN CLIENT SIDE AXIOS POST
   const { timeName } = req.body;
   const sqlInsertNew = `INSERT INTO times SET 
   name = ?, total_time = '00:00:00', count = 0`;
@@ -185,7 +185,7 @@ app.post("/api/post", (req, res) => {
   });
 });
 
-// 4. going back to home from new timer page (delete the curr timer in times)
+// 4. GOING BACK TO HOME FROM NEW TIMER PAGE (delete the curr timer in times)
 app.delete("/api/deleteTimeNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlDeleteTimeNew = `DELETE FROM times
@@ -235,6 +235,56 @@ app.delete("/api/resetNew/:name", (req, res) => {
   db.query(sqlResetNew, name, (err, result) => {
     if (err) throw err;
     res.status(200).send();
+  });
+});
+
+// 6. NEW TIMER SUBMISSOIN
+// 6.1. getting submission values for new timer
+app.get("/api/getSubmissionNew/:name", (req, res) => {
+  const { name } = req.params;
+  const sqlGetSubmissionNew = `SELECT 
+    times.name AS time_name,
+    IFNULL(MAX(curr_time), '00:00:00') AS total_time,
+    COUNT(curr_time) AS count,
+    IFNULL(additional_notes, '') AS additional_notes
+  FROM times
+  LEFT JOIN timer_stats 
+    ON times.id = timer_stats.times_id
+  GROUP BY times.id 
+  HAVING
+    times.id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)`;
+  db.query(sqlGetSubmissionNew, name, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// 6.1. handling submission (update new timer in times)
+app.put("/api/submitTimerNew", (req, res) => {
+  const { time_name, total_time, count, additional_notes } = req.body;
+  // view to get the id of the new timer;
+  // we can't use a subquery of a table when updating that table
+  const sqlTimerIdNewView = `CREATE OR REPLACE VIEW new_timer_id AS
+  SELECT id FROM times
+  WHERE name = ? 
+  ORDER BY created_at DESC LIMIT 1`;
+  db.query(sqlTimerIdNewView, time_name, (err, result) => {
+    if (err) throw err;
+    const sqlSubmitTimerNew = `UPDATE times 
+    SET 
+      name = ?,
+      total_time = ?,
+      count = ?,
+      additional_notes = ?
+    WHERE id = (SELECT * FROM new_timer_id)`;
+    db.query(
+      sqlSubmitTimerNew,
+      [time_name, total_time, count, additional_notes],
+      (err, result) => {
+        if (err) throw err;
+        res.send(result);
+      }
+    );
   });
 });
 
