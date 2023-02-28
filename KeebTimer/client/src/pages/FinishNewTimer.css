@@ -47,3 +47,7 @@ input[type="button"] {
 input[type="submit"]:hover {
   background-color: var(--submit-hover);
 }
+
+.readOnly:hover {
+  cursor: not-allowed;
+}

@@ -164,27 +164,6 @@ app.get("/api/getCountExists/:id", (req, res) => {
   });
 });
 
-// TEST QUERIES:
-// NOTE: these queries are for testing if dynamic queries can be applied to
-//       variables in sub queries
-
-// it works!
-// app.get("/api/getTimeNewTest", (req, res) => {
-//   const name = "testing";
-//   const sqlGetTimeNew = `SELECT
-//     IFNULL(HOUR(curr_time), 0),
-//     IFNULL(MINUTE(curr_time), 0),
-//     IFNULL(SECOND(curr_time), 0)
-//   FROM timer_stats
-//   WHERE
-//     times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)
-//   ORDER BY created_at DESC LIMIT 1`;
-//   db.query(sqlGetTimeNew, name, (err, result) => {
-//     if (err) throw err;
-//     res.send(result);
-//   });
-// });
-
 // 3. INSERTING NEW TIMER INTO TIMES (i.e. start new timer initialization)
 app.post("/api/post", (req, res) => {
   // THIS NAME HAS TO MATCH ARG IN CLIENT SIDE AXIOS POST
@@ -301,6 +280,35 @@ app.put("/api/submitTimerNew", (req, res) => {
         res.send(result);
       }
     );
+  });
+});
+
+// 7. VIEW SAVED TIMES CRUD API CALLS
+// 7.1. getting all of the saved times to display in the CRUD table
+app.get("/api/getSavedTimes", (req, res) => {
+  const sqlGetSavedTimes = "SELECT * FROM times";
+  db.query(sqlGetSavedTimes, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// 7.2. deleting a time
+app.delete("/api/deleteTimeExists/:id", (req, res) => {
+  const { id } = req.params;
+  const sqlDeleteTimeExists = "DELETE FROM times WHERE id = ?";
+  db.query(sqlDeleteTimeExists, id, (err, result) => {
+    if (err) throw err;
+    res.status(200).send();
+  });
+});
+
+// 7.3. deleting all times
+app.delete("/api/deleteAllTimes", (req, res) => {
+  const sqlDeleteAllTimes = "DELETE FROM times";
+  db.query(sqlDeleteAllTimes, (err, result) => {
+    if (err) throw err;
+    res.status(200).send();
   });
 });
 

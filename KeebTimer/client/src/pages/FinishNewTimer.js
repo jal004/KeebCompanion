@@ -67,6 +67,7 @@ const FinishNewTimer = () => {
       >
         <label htmlFor="time_name">Timer Name</label>
         <input
+          className="readOnly"
           type="text"
           id="time_name"
           name="time_name"
@@ -76,6 +77,7 @@ const FinishNewTimer = () => {
 
         <label htmlFor="total_time">Total Time</label>
         <input
+          className="readOnly"
           type="text"
           id="total_time"
           name="total_time"
@@ -84,7 +86,14 @@ const FinishNewTimer = () => {
         />
 
         <label htmlFor="count">Count</label>
-        <input type="number" id="count" name="count" value={count} readOnly />
+        <input
+          className="readOnly"
+          type="number"
+          id="count"
+          name="count"
+          value={count}
+          readOnly
+        />
 
         <label htmlFor="additional_notes">Additional Notes (Optional)</label>
         <textarea

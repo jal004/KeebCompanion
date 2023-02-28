@@ -56,6 +56,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-reset-disabled: #96969649;
   --timer-back: #6f737a;
   --timer-submit: #6f737a;
+  /* saved times buttons */
+  --saved-time-home: #4caf50;
 }
 
 [data-theme="light"] {
@@ -99,6 +101,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-reset-disabled: #96969649;
   --timer-back: #6f737a;
   --timer-submit: #6f737a;
+  /* saved times buttons */
+  --saved-time-home: #4caf50;
 }
 
 [data-theme="dark"] {
@@ -107,7 +111,7 @@ use these variables in other CSS files to create a theme dependencies */
   --text-secondary: white;
   --table-primary: #4e4e4e;
   --table-secondary: #222222;
-  --table-shadow: rgba(160, 160, 160, 0.5);
+  --table-shadow: rgba(160, 160, 160, 0.363);
   --add-btn: #285e2a;
   --submit-btn: #285e2a;
   --delete-btn: #a11c12;
@@ -142,6 +146,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-reset-disabled: #49494942;
   --timer-back: #6f737a;
   --timer-submit: #6f737a;
+  /* saved times buttons */
+  --saved-time-home: #285e2a;
 }
 
 [data-theme="9009"] {
@@ -187,6 +193,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-reset-disabled: #a8a8a85d;
   --timer-back: #858171;
   --timer-submit: #858171;
+  /* saved times buttons */
+  --saved-time-home: #858171;
 }
 
 /* alphas: #dee3eb,
@@ -235,6 +243,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-reset-disabled: #f1f0f06e;
   --timer-back: #2d423f;
   --timer-submit: #2d423f;
+  /* saved times buttons */
+  --saved-time-home: #2d423f;
 }
 [data-theme="modo"] {
   --background: #767a7d;
@@ -279,4 +289,6 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-reset-disabled: #b8b8b85d;
   --timer-back: #4e4e4e;
   --timer-submit: #4e4e4e;
+  /* saved times buttons */
+  --saved-time-home: #4e4e4e;
 }
