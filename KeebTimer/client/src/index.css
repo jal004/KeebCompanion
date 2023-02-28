@@ -58,6 +58,10 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #6f737a;
   /* saved times buttons */
   --saved-time-home: #4caf50;
+  /* view time buttons */
+  --timer-details-btn: #4caf50;
+  --timer-details-text: white;
+  --timer-back-btn: #008cba;
 }
 
 [data-theme="light"] {
@@ -103,6 +107,10 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #6f737a;
   /* saved times buttons */
   --saved-time-home: #4caf50;
+  /* view time buttons */
+  --timer-details-btn: #4caf50;
+  --timer-details-text: white;
+  --timer-back-btn: #008cba;
 }
 
 [data-theme="dark"] {
@@ -148,6 +156,10 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #6f737a;
   /* saved times buttons */
   --saved-time-home: #285e2a;
+  /* view time buttons */
+  --timer-details-btn: #285e2a;
+  --timer-details-text: white;
+  --timer-back-btn: #0d4b9b;
 }
 
 [data-theme="9009"] {
@@ -195,6 +207,10 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #858171;
   /* saved times buttons */
   --saved-time-home: #858171;
+  /* view time buttons */
+  --timer-details-btn: #768e72;
+  --timer-details-text: #171718;
+  --timer-back-btn: #b8b8b8;
 }
 
 /* alphas: #dee3eb,
@@ -245,6 +261,10 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #2d423f;
   /* saved times buttons */
   --saved-time-home: #2d423f;
+  /* view time buttons */
+  --timer-details-btn: #f1f0f0;
+  --timer-details-text: #3e5d58;
+  --timer-back-btn: #4b706a;
 }
 [data-theme="modo"] {
   --background: #767a7d;
@@ -291,4 +311,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #4e4e4e;
   /* saved times buttons */
   --saved-time-home: #4e4e4e;
+  /* view time buttons */
+  --timer-details-btn: #82d9d1;
+  --timer-details-text: white;
+  --timer-back-btn: #b8b8b8;
 }

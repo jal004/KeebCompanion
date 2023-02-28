@@ -23,3 +23,21 @@
   margin-bottom: 25px;
   padding: 4px 16px;
 }
+
+.view-btns-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#timer-details-btn {
+  background-color: var(--timer-details-btn);
+  color: var(--timer-details-text);
+}
+
+#timer-back-btn {
+  background-color: var(--timer-back-btn);
+  padding-left: 26px;
+  padding-right: 26px;
+}

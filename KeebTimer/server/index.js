@@ -312,6 +312,16 @@ app.delete("/api/deleteAllTimes", (req, res) => {
   });
 });
 
+// 7.4. viewing individual time
+app.get("/api/viewTime/:id", (req, res) => {
+  const { id } = req.params;
+  const sqlViewTime = "SELECT * FROM times WHERE id = ?";
+  db.query(sqlViewTime, id, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
 app.listen(5000, function () {
   console.log("Server running on port 5000!");
 });
