@@ -44,10 +44,65 @@ const FinishNewTimer = () => {
         });
       })
       .catch((err) => toast.error(err.response.data));
-    toast.success("Timer ");
+    toast.success("Timer Saved Successfully!");
+    setTimeout(() => navigate("/"), 500);
   };
 
-  return <div>FinishNewTimer</div>;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
+
+  return (
+    <div style={{ marginTop: "160px" }}>
+      <h1 id="title">Finish New Timer</h1>
+      <form
+        style={{
+          margin: "auto",
+          padding: "15px",
+          maxWidth: "400px",
+          alignContent: "center",
+        }}
+        onSubmit={handleSubmit}
+      >
+        <label htmlFor="time_name">Timer Name</label>
+        <input
+          type="text"
+          id="time_name"
+          name="time_name"
+          value={time_name}
+          readOnly
+        />
+
+        <label htmlFor="total_time">Total Time</label>
+        <input
+          type="text"
+          id="total_time"
+          name="total_time"
+          value={total_time}
+          readOnly
+        />
+
+        <label htmlFor="count">Count</label>
+        <input type="number" id="count" name="count" value={count} readOnly />
+
+        <label htmlFor="additional_notes">Additional Notes (Optional)</label>
+        <textarea
+          style={{ resize: "none" }}
+          type="text"
+          id="additional_notes"
+          name="additional_notes"
+          rows="6"
+          maxLength="255"
+          placeholder="Additional notes for the item (255 character limit)"
+          value={additional_notes}
+          onChange={handleInputChange}
+        ></textarea>
+        <input type="submit" value="Save Timer" />
+        <input type="button" value="Go Back" onClick={() => navigate(-1)} />
+      </form>
+    </div>
+  );
 };
 
 export default FinishNewTimer;

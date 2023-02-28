@@ -9,13 +9,16 @@ const Timer = () => {
   // go back to home clean up;
   // stops the current timer if it is running when exiting page
 
-  // prepopulating with saved time and count
-  const [savedTime, setSavedTime] = useState({});
-  const [savedCount, setSavedCount] = useState({});
-
   // allows us to access the value in the URL following the '/';
   // we have to specify this value with a ':' prepended in the path attr in App.js
+  // WE USE THIS FOR URLS IN API CALLS
   const { name } = useParams();
+
+  // prepopulating with saved name, time and count
+  const [savedTime, setSavedTime] = useState({});
+  const [savedCount, setSavedCount] = useState({});
+  // USE THIS FOR EXISTING TIMER LATER
+  // const [savedName, setSavedName] = useState({});
 
   const [count, setCount] = useState(0);
 
@@ -30,6 +33,10 @@ const Timer = () => {
   let displayMins = useRef("");
   let displaySecs = useRef("");
 
+  // USE THIS FOR EXISTING TIMER LATER
+  // ref storing saved name to display
+  //let displayName = useRef("");
+
   useEffect(() => {
     // getting saved time
     axios.get(`http://localhost:5000/api/getTimeNew/${name}`).then((resp) => {
@@ -39,6 +46,11 @@ const Timer = () => {
     axios.get(`http://localhost:5000/api/getCountNew/${name}`).then((resp) => {
       setSavedCount({ ...resp.data[0] });
     });
+    // USE THIS FOR EXISTING TIMER LATER
+    // getting saved name
+    // axios.get(`http://localhost:5000/api/getNameNew/${name}`).then((resp) => {
+    //   setSavedName({ ...resp.data[0] });
+    // });
   }, [name]);
 
   // assigning INITIAL VALUE of counter to most recently saved value for timer
@@ -47,14 +59,6 @@ const Timer = () => {
     setCount(savedCount.count_new);
   }, [savedCount]);
 
-  // DEBUG
-  // console.log(savedTime);
-  // console.log(savedCount);
-  // console.log(savedTime.hr_new);
-  // console.log(savedTime.min_new);
-  // console.log(savedTime.sec_new);
-  // console.log(savedCount.count_new);
-
   // assign INITIAL VALUE of time units to most recently saved value for timer
   // (HANDLING RETAINING TIME WHEN GOING BACK FROM SUBMIT FORM)
   useEffect(() => {
@@ -62,6 +66,12 @@ const Timer = () => {
     minutes.current = savedTime.min_new;
     seconds.current = savedTime.sec_new;
   }, [savedTime]);
+
+  // USE THIS FOR EXISTING TIMER LATER
+  // assign INITIAL VALUE of name to most recently saved value for timer
+  // useEffect(() => {
+  //   displayName.current = savedName.name;
+  // }, [savedName]);
 
   // processing initial times for display
   // (HANDLING RETAINING TIME WHEN GOING BACK FROM SUBMIT FORM)

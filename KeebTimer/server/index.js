@@ -118,6 +118,22 @@ app.get("/api/getCountNew/:name", (req, res) => {
   });
 });
 
+// NOTE: USE THIS FOR EXISTING TIMER; this is not relevant for new timer
+// - transfer the code blocks commented with 'USE THIS FOR EXISTING TIMER LATER' in
+//   Timer.js to use them as connection logic in EditTimer.js
+// - use displayName.current instead of name for name displayed in header of timer
+//   in EditTimer.js
+// 1.3. getting the name
+// app.get("/api/getNameNew/:name", (req, res) => {
+//   const { name } = req.params;
+//   const sqlGetNameNew = `SELECT name FROM times
+//   WHERE name = ? ORDER BY created_at DESC LIMIT 1`;
+//   db.query(sqlGetNameNew, name, (err, result) => {
+//     if (err) throw err;
+//     res.send(result);
+//   });
+// });
+
 // 2. SAVED TIMER QUERIES (i.e. based on passed times id)
 // 2.1. getting most recent lap
 app.get("/api/getTimeExists/:id", (req, res) => {

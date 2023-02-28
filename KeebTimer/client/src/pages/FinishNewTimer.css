@@ -1,0 +1,49 @@
+/* added select to this form */
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Arial;
+  background-color: var(--accent);
+  color: var(--select-primary);
+}
+
+::placeholder {
+  color: var(--select-secondary);
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: var(--submit-btn);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input[type="button"] {
+  width: 100%;
+  background-color: var(--table-primary);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--submit-hover);
+}
