@@ -17,8 +17,6 @@ const Timer = () => {
   // prepopulating with saved name, time and count
   const [savedTime, setSavedTime] = useState({});
   const [savedCount, setSavedCount] = useState({});
-  // USE THIS FOR EXISTING TIMER LATER
-  // const [savedName, setSavedName] = useState({});
 
   const [count, setCount] = useState(0);
 
@@ -61,12 +59,6 @@ const Timer = () => {
     minutes.current = savedTime.min_new;
     seconds.current = savedTime.sec_new;
   }, [savedTime]);
-
-  // USE THIS FOR EXISTING TIMER LATER
-  // assign INITIAL VALUE of name to most recently saved value for timer
-  // useEffect(() => {
-  //   displayName.current = savedName.name;
-  // }, [savedName]);
 
   // processing initial times for display
   // (HANDLING RETAINING TIME WHEN GOING BACK FROM SUBMIT FORM)

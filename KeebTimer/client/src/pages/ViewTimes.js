@@ -36,7 +36,7 @@ const ViewTimes = () => {
   const editBtnWarning = (id) => {
     if (
       window.confirm(
-        `All edits made to an existing timer are permanent and must be submitted by finishing the timer. \nDo not try to use the back button on your browser in an attempt to reverse the changes. \n\nWould you like to continue?`
+        `All edits made to an existing timer are permanent and must be submitted by finishing the timer. \nIf you do not make any changes while editing, finish the timer to exit without any updates. \n\nDo not try to use the back button on your browser in an attempt to reverse the changes or cancel the edit. \n\nAfter reading and understanding this, press OK to continue.`
       )
     ) {
       navigate(`/editTimer/${id}`);

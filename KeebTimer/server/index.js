@@ -187,7 +187,7 @@ app.delete("/api/resetNew/:name", (req, res) => {
   });
 });
 
-// 6. START NEW TIMER SUBMISSOIN
+// 6. START NEW TIMER SUBMISSION
 // 6.1. getting submission values for new timer
 app.get("/api/getSubmissionNew/:name", (req, res) => {
   const { name } = req.params;
@@ -236,12 +236,6 @@ app.put("/api/submitTimerNew", (req, res) => {
     );
   });
 });
-
-// NOTE: USE THIS FOR EXISTING TIMER; this is not relevant for new timer
-// - transfer the code blocks commented with 'USE THIS FOR EXISTING TIMER LATER' in
-//   Timer.js to use them as connection logic in EditTimer.js
-// - use displayName.current instead of name for name displayed in header of timer
-//   in EditTimer.js
 
 // 2. SAVED TIMER INITIAL VALUE QUERIES (i.e. based on passed times id)
 // 2.1. getting the name
@@ -349,6 +343,54 @@ app.delete("/api/resetExists/:id", (req, res) => {
   db.query(sqlResetNew, id, (err, result) => {
     if (err) throw err;
     res.status(200).send();
+  });
+});
+
+// EDIT EXISTING TIMER SUBMISSION
+// 6.1. getting submission values for existing timer
+app.get("/api/getSubmissionExists/:id", (req, res) => {
+  const { id } = req.params;
+  const sqlGetSubmissionExists = `SELECT 
+    times.name AS time_name,
+    IFNULL(MAX(curr_time), '00:00:00') AS total_time,
+    COUNT(curr_time) AS count,
+    IFNULL(additional_notes, '') AS additional_notes
+  FROM times
+  LEFT JOIN timer_stats 
+    ON times.id = timer_stats.times_id
+  GROUP BY times.id 
+  HAVING
+    times.id = ?`;
+  db.query(sqlGetSubmissionExists, id, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// 6.2. handling submission (update new timer in times)
+app.put("/api/submitTimerExists", (req, res) => {
+  const { id, time_name, total_time, count, additional_notes } = req.body;
+  // update name in laps
+  const sqlUpdateLapName = `UPDATE timer_stats
+  SET name = ?
+  WHERE times_id = ?`;
+  db.query(sqlUpdateLapName, [time_name, id], (err, result) => {
+    if (err) throw err;
+    const sqlSubmitTimerExists = `UPDATE times 
+    SET 
+      name = ?,
+      total_time = ?,
+      count = ?,
+      additional_notes = ?
+    WHERE id = ?`;
+    db.query(
+      sqlSubmitTimerExists,
+      [time_name, total_time, count, additional_notes, id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(result);
+      }
+    );
   });
 });
 
