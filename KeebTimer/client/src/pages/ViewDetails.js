@@ -31,7 +31,7 @@ const ViewDetails = () => {
   }, [id]);
 
   return (
-    <div style={{ marginTop: "160px" }}>
+    <div id="timer-details-wrapper" style={{ marginTop: "160px" }}>
       <h1>More Details</h1>
       <h2 style={{ marginTop: "30px" }}>Timer Statistics Per Lap</h2>
       <table className="styled-table">

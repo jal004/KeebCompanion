@@ -46,11 +46,6 @@ const Timer = () => {
     axios.get(`http://localhost:5000/api/getCountNew/${name}`).then((resp) => {
       setSavedCount({ ...resp.data[0] });
     });
-    // USE THIS FOR EXISTING TIMER LATER
-    // getting saved name
-    // axios.get(`http://localhost:5000/api/getNameNew/${name}`).then((resp) => {
-    //   setSavedName({ ...resp.data[0] });
-    // });
   }, [name]);
 
   // assigning INITIAL VALUE of counter to most recently saved value for timer

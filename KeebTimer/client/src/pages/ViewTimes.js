@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ViewTimes.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 
 const ViewTimes = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   const loadData = async () => {
@@ -32,8 +33,18 @@ const ViewTimes = () => {
     }
   };
 
+  const editBtnWarning = (id) => {
+    if (
+      window.confirm(
+        `All edits made to an existing timer are permanent and must be submitted by finishing the timer. \nDo not try to use the back button on your browser in an attempt to reverse the changes. \n\nWould you like to continue?`
+      )
+    ) {
+      navigate(`/editTimer/${id}`);
+    }
+  };
+
   return (
-    <div style={{ marginTop: "160px" }}>
+    <div id="timer-crud-wrapper" style={{ marginTop: "160px" }}>
       <h1>View Saved Times</h1>
       <button
         className="crud-btn crud-btn-deleteAll"
@@ -60,9 +71,12 @@ const ViewTimes = () => {
                 <td>{item.total_time}</td>
                 <td>{item.count}</td>
                 <td>
-                  <Link to={`/editTimer/${item.id}`}>
-                    <button className="crud-btn crud-btn-edit">Edit</button>
-                  </Link>
+                  <button
+                    className="crud-btn crud-btn-edit"
+                    onClick={() => editBtnWarning(item.id)}
+                  >
+                    Edit
+                  </button>
                   <button
                     className="crud-btn crud-btn-delete"
                     onClick={() => deleteTime(item.id)}

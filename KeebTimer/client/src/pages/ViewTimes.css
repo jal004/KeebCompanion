@@ -67,3 +67,11 @@
   margin-top: 20px;
   color: var(--text-secondary);
 }
+
+#timer-crud-wrapper {
+  height: 100%;
+}
+
+#timer-details-wrapper {
+  height: 100%;
+}

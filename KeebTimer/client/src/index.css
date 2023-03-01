@@ -119,7 +119,7 @@ use these variables in other CSS files to create a theme dependencies */
   --text-secondary: white;
   --table-primary: #4e4e4e;
   --table-secondary: #222222;
-  --table-shadow: rgba(160, 160, 160, 0.363);
+  --table-shadow: rgba(80, 80, 80, 0.322);
   --add-btn: #285e2a;
   --submit-btn: #285e2a;
   --delete-btn: #a11c12;

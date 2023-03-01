@@ -60,8 +60,24 @@ db.connect((err) => {
   });
 });
 
-// 1. START NEW TIMER INITIAL VALUE QUERIES (i.e. based on id of most recent of name)
-// 1.1. correct query to handle new timer values (i.e. no existing laps)
+// 1. INSERTING NEW TIMER INTO TIMES (i.e. start new timer initialization)
+app.post("/api/post", (req, res) => {
+  // THIS NAME HAS TO MATCH ARG IN CLIENT SIDE AXIOS POST
+  const { timeName } = req.body;
+  const sqlInsertNew = `INSERT INTO times SET 
+  name = ?, total_time = '00:00:00', count = 0`;
+  db.query(sqlInsertNew, [timeName], (err, result) => {
+    if (err) throw err;
+    // NOTE: we have to send a response otherwise the app will crash
+    //       after the browser waits for 6 or more pending requests
+
+    // this response (status 200) indicates successful request
+    res.status(200).send();
+  });
+});
+
+// 2. START NEW TIMER INITIAL VALUE QUERIES (i.e. based on id of most recent of name)
+// 2.1. correct query to handle new timer values (i.e. no existing laps)
 app.get("/api/getTimeNew/:name", (req, res) => {
   const { name } = req.params;
   // creating views for each of the desired columns
@@ -106,81 +122,19 @@ app.get("/api/getTimeNew/:name", (req, res) => {
   });
 });
 
-// 1.2. getting the count
+// 2.2. getting the count
 app.get("/api/getCountNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlGetCountNew = `SELECT COUNT(*) AS count_new FROM timer_stats
   WHERE 
-    times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)`;
+  times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)`;
   db.query(sqlGetCountNew, name, (err, result) => {
     if (err) throw err;
     res.send(result);
   });
 });
 
-// NOTE: USE THIS FOR EXISTING TIMER; this is not relevant for new timer
-// - transfer the code blocks commented with 'USE THIS FOR EXISTING TIMER LATER' in
-//   Timer.js to use them as connection logic in EditTimer.js
-// - use displayName.current instead of name for name displayed in header of timer
-//   in EditTimer.js
-// 1.3. getting the name
-// app.get("/api/getNameNew/:name", (req, res) => {
-//   const { name } = req.params;
-//   const sqlGetNameNew = `SELECT name FROM times
-//   WHERE name = ? ORDER BY created_at DESC LIMIT 1`;
-//   db.query(sqlGetNameNew, name, (err, result) => {
-//     if (err) throw err;
-//     res.send(result);
-//   });
-// });
-
-// 2. SAVED TIMER QUERIES (i.e. based on passed times id)
-// 2.1. getting most recent lap
-app.get("/api/getTimeExists/:id", (req, res) => {
-  const { id } = req.params;
-  const sqlGetTimeExists = `SELECT 
-    IFNULL(HOUR(curr_time), 0) AS hr_exists,
-    IFNULL(MINUTE(curr_time), 0) AS min_exists,
-    IFNULL(SECOND(curr_time), 0) AS sec_exists
-  FROM timer_stats
-  WHERE
-    times_id = ?
-  ORDER BY created_at DESC LIMIT 1`;
-  db.query(sqlGetTimeExists, id, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
-});
-
-// 2.2. getting the count
-app.get("/api/getCountExists/:id", (req, res) => {
-  const { id } = req.params;
-  const sqlGetCountExists = `SELECT COUNT(*) AS count_exists FROM timer_stats
-  WHERE 
-    times_id = ?`;
-  db.query(sqlGetCountExists, id, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
-});
-
-// 3. INSERTING NEW TIMER INTO TIMES (i.e. start new timer initialization)
-app.post("/api/post", (req, res) => {
-  // THIS NAME HAS TO MATCH ARG IN CLIENT SIDE AXIOS POST
-  const { timeName } = req.body;
-  const sqlInsertNew = `INSERT INTO times SET 
-  name = ?, total_time = '00:00:00', count = 0`;
-  db.query(sqlInsertNew, [timeName], (err, result) => {
-    if (err) throw err;
-    // NOTE: we have to send a response otherwise the app will crash
-    //       after the browser waits for 6 or more pending requests
-
-    // this response (status 200) indicates successful request
-    res.status(200).send();
-  });
-});
-
-// 4. GOING BACK TO HOME FROM NEW TIMER PAGE (delete the curr timer in times)
+// 3. GOING BACK TO HOME FROM START NEW TIMER PAGE (delete the curr timer in times)
 app.delete("/api/deleteTimeNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlDeleteTimeNew = `DELETE FROM times
@@ -226,14 +180,14 @@ app.delete("/api/resetNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlResetNew = `DELETE FROM timer_stats 
   WHERE 
-    times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1);`;
+    times_id = (SELECT id FROM times WHERE name = ? ORDER BY created_at DESC LIMIT 1)`;
   db.query(sqlResetNew, name, (err, result) => {
     if (err) throw err;
     res.status(200).send();
   });
 });
 
-// 6. NEW TIMER SUBMISSOIN
+// 6. START NEW TIMER SUBMISSOIN
 // 6.1. getting submission values for new timer
 app.get("/api/getSubmissionNew/:name", (req, res) => {
   const { name } = req.params;
@@ -254,7 +208,7 @@ app.get("/api/getSubmissionNew/:name", (req, res) => {
   });
 });
 
-// 6.1. handling submission (update new timer in times)
+// 6.2. handling submission (update new timer in times)
 app.put("/api/submitTimerNew", (req, res) => {
   const { time_name, total_time, count, additional_notes } = req.body;
   // view to get the id of the new timer;
@@ -283,7 +237,122 @@ app.put("/api/submitTimerNew", (req, res) => {
   });
 });
 
-// 7. TIMER CRUD API CALLS
+// NOTE: USE THIS FOR EXISTING TIMER; this is not relevant for new timer
+// - transfer the code blocks commented with 'USE THIS FOR EXISTING TIMER LATER' in
+//   Timer.js to use them as connection logic in EditTimer.js
+// - use displayName.current instead of name for name displayed in header of timer
+//   in EditTimer.js
+
+// 2. SAVED TIMER INITIAL VALUE QUERIES (i.e. based on passed times id)
+// 2.1. getting the name
+app.get("/api/getNameExists/:id", (req, res) => {
+  const { id } = req.params;
+  const sqlGetNameNew = `SELECT name FROM times
+  WHERE id = ?`;
+  db.query(sqlGetNameNew, id, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// 2.2. getting most recent lap
+app.get("/api/getTimeExists/:id", (req, res) => {
+  const { id } = req.params;
+  // creating views for each of the desired columns
+  // (queries will always return a value, even if none exist (null))
+  // hour
+  const sqlViewHrExists = `CREATE OR REPLACE VIEW view_hr_exists AS 
+  SELECT HOUR(curr_time) FROM timer_stats
+  WHERE 
+    times_id = ?
+  ORDER BY created_at DESC LIMIT 1`;
+  // minute
+  const sqlViewMinExists = `CREATE OR REPLACE VIEW view_min_exists AS 
+  SELECT MINUTE(curr_time) FROM timer_stats
+  WHERE 
+    times_id = ?
+  ORDER BY created_at DESC LIMIT 1`;
+  // second
+  const sqlViewSecExists = `CREATE OR REPLACE VIEW view_sec_exists AS 
+  SELECT SECOND(curr_time) FROM timer_stats
+  WHERE 
+    times_id = ?
+  ORDER BY created_at DESC LIMIT 1`;
+  // creating views
+  db.query(sqlViewHrExists, id, (err, result) => {
+    if (err) throw err;
+    db.query(sqlViewMinExists, id, (err, result) => {
+      if (err) throw err;
+      db.query(sqlViewSecExists, id, (err, result) => {
+        if (err) throw err;
+        // using views to find existing values, or return 0 otherwise
+        const sqlGetTimeExists = `SELECT 
+        IFNULL((SELECT * FROM view_hr_exists), 0) AS hr_exists,
+        IFNULL((SELECT * FROM view_min_exists), 0) AS min_exists,
+        IFNULL((SELECT * FROM view_sec_exists), 0) AS sec_exists
+        `;
+        db.query(sqlGetTimeExists, (err, result) => {
+          if (err) throw err;
+          res.send(result);
+        });
+      });
+    });
+  });
+});
+
+// 2.3. getting the count
+app.get("/api/getCountExists/:id", (req, res) => {
+  const { id } = req.params;
+  const sqlGetCountExists = `SELECT COUNT(*) AS count_exists FROM timer_stats
+  WHERE 
+    times_id = ?`;
+  db.query(sqlGetCountExists, id, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// SAVED TIMER COUNTER FUNCTIONS; i.e. based on existing times id
+// 5.1. increment counter (add row into timer_stats)
+app.post("/api/incrementExists", (req, res) => {
+  const { timerName, timerId, currTime } = req.body;
+  const sqlIncrementExists = `INSERT INTO timer_stats SET
+    name = '${timerName}', 
+    times_id = ?,
+    curr_time = ?`;
+  db.query(sqlIncrementExists, [timerId, currTime], (err, result) => {
+    if (err) throw err;
+    res.status(200).send();
+  });
+});
+
+// 5.2. decrement counter (remove most recent row with times_id from timer_stats)
+// NOTE: delete requests must use req.params (i.e. path vars); req.body is ignored
+app.delete("/api/decrementExists/:id", (req, res) => {
+  const { id } = req.params;
+  const sqlDecrementExists = `DELETE FROM timer_stats 
+  WHERE 
+    times_id = ?
+  ORDER BY created_at DESC LIMIT 1`;
+  db.query(sqlDecrementExists, id, (err, result) => {
+    if (err) throw err;
+    res.status(200).send();
+  });
+});
+
+// 5.3. reset counter (remove ALL rows from timer_stats)
+app.delete("/api/resetExists/:id", (req, res) => {
+  const { id } = req.params;
+  const sqlResetNew = `DELETE FROM timer_stats 
+  WHERE 
+    times_id = ?`;
+  db.query(sqlResetNew, id, (err, result) => {
+    if (err) throw err;
+    res.status(200).send();
+  });
+});
+
+// 7. SAVED TIMES CRUD API CALLS
 // 7.1. getting all of the saved times to display in the CRUD table
 app.get("/api/getSavedTimes", (req, res) => {
   const sqlGetSavedTimes = "SELECT * FROM times";
@@ -322,7 +391,7 @@ app.get("/api/viewTime/:id", (req, res) => {
   });
 });
 
-// 8. VIEW MORE DETAILS OF TIMER
+// 8. VIEW MORE DETAILS OF SAVED TIMER
 // 8.1. getting laps for a timer
 app.get("/api/viewLaps/:id", (req, res) => {
   const { id } = req.params;
