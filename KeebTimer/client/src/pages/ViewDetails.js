@@ -57,7 +57,7 @@ const ViewDetails = () => {
       <h1>More Details</h1>
       <button
         style={{ paddingTop: "8px", marginTop: "5px", marginBottom: "5px" }}
-        className="btn crud-btn-edit"
+        className="btn crud-btn-back"
         onClick={() => navigate(-1)}
       >
         Go Back

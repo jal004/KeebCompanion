@@ -147,8 +147,8 @@ app.delete("/api/deleteTimeNew/:name", (req, res) => {
   });
 });
 
-// 5. START NEW TIMER COUNTER FUNCTIONS; i.e. get id based on most recent of name
-// 5.1. increment counter (add row into timer_stats)
+// 4. START NEW TIMER COUNTER FUNCTIONS; i.e. get id based on most recent of name
+// 4.1. increment counter (add row into timer_stats)
 app.post("/api/incrementNew", (req, res) => {
   const { timerName, currTime } = req.body;
   const sqlIncrementNew = `INSERT INTO timer_stats SET
@@ -161,7 +161,7 @@ app.post("/api/incrementNew", (req, res) => {
   });
 });
 
-// 5.2. decrement counter (remove most recent row with times_id from timer_stats)
+// 4.2. decrement counter (remove most recent row with times_id from timer_stats)
 // NOTE: delete requests must use req.params (i.e. path vars); req.body is ignored
 app.delete("/api/decrementNew/:name", (req, res) => {
   const { name } = req.params;
@@ -175,7 +175,7 @@ app.delete("/api/decrementNew/:name", (req, res) => {
   });
 });
 
-// 5.3. reset counter (remove ALL rows from timer_stats)
+// 4.3. reset counter (remove ALL rows from timer_stats)
 app.delete("/api/resetNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlResetNew = `DELETE FROM timer_stats 
@@ -187,8 +187,8 @@ app.delete("/api/resetNew/:name", (req, res) => {
   });
 });
 
-// 6. START NEW TIMER SUBMISSION
-// 6.1. getting submission values for new timer
+// 5. START NEW TIMER SUBMISSION
+// 5.1. getting submission values for new timer
 app.get("/api/getSubmissionNew/:name", (req, res) => {
   const { name } = req.params;
   const sqlGetSubmissionNew = `SELECT 
@@ -208,7 +208,7 @@ app.get("/api/getSubmissionNew/:name", (req, res) => {
   });
 });
 
-// 6.2. handling submission (update new timer in times)
+// 5.2. handling submission (update new timer in times)
 app.put("/api/submitTimerNew", (req, res) => {
   const { time_name, total_time, count, additional_notes } = req.body;
   // view to get the id of the new timer;
@@ -237,8 +237,8 @@ app.put("/api/submitTimerNew", (req, res) => {
   });
 });
 
-// 2. SAVED TIMER INITIAL VALUE QUERIES (i.e. based on passed times id)
-// 2.1. getting the name
+// 6. SAVED TIMER INITIAL VALUE QUERIES (i.e. based on passed times id)
+// 6.1. getting the name
 app.get("/api/getNameExists/:id", (req, res) => {
   const { id } = req.params;
   const sqlGetNameNew = `SELECT name FROM times
@@ -249,7 +249,7 @@ app.get("/api/getNameExists/:id", (req, res) => {
   });
 });
 
-// 2.2. getting most recent lap
+// 6.2. getting most recent lap
 app.get("/api/getTimeExists/:id", (req, res) => {
   const { id } = req.params;
   // creating views for each of the desired columns
@@ -294,7 +294,7 @@ app.get("/api/getTimeExists/:id", (req, res) => {
   });
 });
 
-// 2.3. getting the count
+// 6.3. getting the count
 app.get("/api/getCountExists/:id", (req, res) => {
   const { id } = req.params;
   const sqlGetCountExists = `SELECT COUNT(*) AS count_exists FROM timer_stats
@@ -306,8 +306,8 @@ app.get("/api/getCountExists/:id", (req, res) => {
   });
 });
 
-// SAVED TIMER COUNTER FUNCTIONS; i.e. based on existing times id
-// 5.1. increment counter (add row into timer_stats)
+// 7. SAVED TIMER COUNTER FUNCTIONS; i.e. based on existing times id
+// 7.1. increment counter (add row into timer_stats)
 app.post("/api/incrementExists", (req, res) => {
   const { timerName, timerId, currTime } = req.body;
   const sqlIncrementExists = `INSERT INTO timer_stats SET
@@ -320,7 +320,7 @@ app.post("/api/incrementExists", (req, res) => {
   });
 });
 
-// 5.2. decrement counter (remove most recent row with times_id from timer_stats)
+// 7.2. decrement counter (remove most recent row with times_id from timer_stats)
 // NOTE: delete requests must use req.params (i.e. path vars); req.body is ignored
 app.delete("/api/decrementExists/:id", (req, res) => {
   const { id } = req.params;
@@ -334,7 +334,7 @@ app.delete("/api/decrementExists/:id", (req, res) => {
   });
 });
 
-// 5.3. reset counter (remove ALL rows from timer_stats)
+// 7.3. reset counter (remove ALL rows from timer_stats)
 app.delete("/api/resetExists/:id", (req, res) => {
   const { id } = req.params;
   const sqlResetNew = `DELETE FROM timer_stats 
@@ -346,8 +346,8 @@ app.delete("/api/resetExists/:id", (req, res) => {
   });
 });
 
-// EDIT EXISTING TIMER SUBMISSION
-// 6.1. getting submission values for existing timer
+// 8. SUBMITTING EXISTING TIMER AFTER EDIT
+// 8.1. getting submission values for existing timer
 app.get("/api/getSubmissionExists/:id", (req, res) => {
   const { id } = req.params;
   const sqlGetSubmissionExists = `SELECT 
@@ -367,7 +367,7 @@ app.get("/api/getSubmissionExists/:id", (req, res) => {
   });
 });
 
-// 6.2. handling submission (update new timer in times)
+// 8.2. handling submission (update new timer in times)
 app.put("/api/submitTimerExists", (req, res) => {
   const { id, time_name, total_time, count, additional_notes } = req.body;
   // update name in laps
@@ -394,8 +394,8 @@ app.put("/api/submitTimerExists", (req, res) => {
   });
 });
 
-// 7. SAVED TIMES CRUD API CALLS
-// 7.1. getting all of the saved times to display in the CRUD table
+// 9. SAVED TIMES CRUD API CALLS
+// 9.1. getting all of the saved times to display in the CRUD table
 app.get("/api/getSavedTimes", (req, res) => {
   const sqlGetSavedTimes = "SELECT * FROM times";
   db.query(sqlGetSavedTimes, (err, result) => {
@@ -404,7 +404,7 @@ app.get("/api/getSavedTimes", (req, res) => {
   });
 });
 
-// 7.2. deleting a time
+// 9.2. deleting a time
 app.delete("/api/deleteTimeExists/:id", (req, res) => {
   const { id } = req.params;
   const sqlDeleteTimeExists = "DELETE FROM times WHERE id = ?";
@@ -414,7 +414,7 @@ app.delete("/api/deleteTimeExists/:id", (req, res) => {
   });
 });
 
-// 7.3. deleting all times
+// 9.3. deleting all times
 app.delete("/api/deleteAllTimes", (req, res) => {
   const sqlDeleteAllTimes = "DELETE FROM times";
   db.query(sqlDeleteAllTimes, (err, result) => {
@@ -423,7 +423,7 @@ app.delete("/api/deleteAllTimes", (req, res) => {
   });
 });
 
-// 7.4. viewing individual time
+// 9.4. viewing individual time
 app.get("/api/viewTime/:id", (req, res) => {
   const { id } = req.params;
   const sqlViewTime = "SELECT * FROM times WHERE id = ?";
@@ -433,8 +433,8 @@ app.get("/api/viewTime/:id", (req, res) => {
   });
 });
 
-// 8. VIEW MORE DETAILS OF SAVED TIMER
-// 8.1. getting laps for a timer
+// 10. VIEW MORE DETAILS OF SAVED TIMER
+// 10.1. getting laps for a timer
 app.get("/api/viewLaps/:id", (req, res) => {
   const { id } = req.params;
   const sqlViewLaps = "SELECT * FROM timer_stats WHERE times_id = ?";
@@ -444,7 +444,7 @@ app.get("/api/viewLaps/:id", (req, res) => {
   });
 });
 
-// 8.2. getting lap stats for a timer
+// 10.2. getting lap stats for a timer
 app.get("/api/viewStats/:id", (req, res) => {
   const { id } = req.params;
   // view to get the lap differences between times for a timer

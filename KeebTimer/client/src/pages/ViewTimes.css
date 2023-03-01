@@ -45,7 +45,7 @@
 }
 
 .crud-btn-edit {
-  background-color: var(--edit-btn);
+  background-color: var(--saved-time-edit);
 }
 
 .crud-btn-delete {

@@ -57,7 +57,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-back: #6f737a;
   --timer-submit: #6f737a;
   /* saved times buttons */
-  --saved-time-home: #4caf50;
+  --saved-time-home: #008cba;
+  --saved-time-edit: #4caf50;
   /* view time buttons */
   --timer-details-btn: #4caf50;
   --timer-details-text: white;
@@ -108,7 +109,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-back: #6f737a;
   --timer-submit: #6f737a;
   /* saved times buttons */
-  --saved-time-home: #4caf50;
+  --saved-time-home: #008cba;
+  --saved-time-edit: #4caf50;
   /* view time buttons */
   --timer-details-btn: #4caf50;
   --timer-details-text: white;
@@ -159,7 +161,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-back: #6f737a;
   --timer-submit: #6f737a;
   /* saved times buttons */
-  --saved-time-home: #285e2a;
+  --saved-time-home: #0d4b9b;
+  --saved-time-edit: #285e2a;
   /* view time buttons */
   --timer-details-btn: #285e2a;
   --timer-details-text: white;
@@ -213,12 +216,13 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #858171;
   /* saved times buttons */
   --saved-time-home: #858171;
+  --saved-time-edit: #768e72;
   /* view time buttons */
   --timer-details-btn: #768e72;
   --timer-details-text: #171718;
-  --timer-back-btn: #b8b8b8;
+  --timer-back-btn: #858171;
   /* going back to top button */
-  --top-btn: #c87e74;
+  --top-btn: #768e72;
 }
 
 /* alphas: #dee3eb,
@@ -269,10 +273,11 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #2d423f;
   /* saved times buttons */
   --saved-time-home: #2d423f;
+  --saved-time-edit: #4b706a;
   /* view time buttons */
   --timer-details-btn: #f1f0f0;
   --timer-details-text: #3e5d58;
-  --timer-back-btn: #4b706a;
+  --timer-back-btn: #2d423f;
   /* going back to top button */
   --top-btn: #f1f0f0;
 }
@@ -321,10 +326,11 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-submit: #4e4e4e;
   /* saved times buttons */
   --saved-time-home: #4e4e4e;
+  --saved-time-edit: #82d9d1;
   /* view time buttons */
   --timer-details-btn: #82d9d1;
   --timer-details-text: white;
-  --timer-back-btn: #b8b8b8;
+  --timer-back-btn: #4e4e4e;
   /* going back to top button */
-  --top-btn: #bb5666;
+  --top-btn: #82d9d1;
 }
