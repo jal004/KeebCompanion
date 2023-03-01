@@ -62,6 +62,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-details-btn: #4caf50;
   --timer-details-text: white;
   --timer-back-btn: #008cba;
+  /* going back to top button */
+  --top-btn: #4caf50;
 }
 
 [data-theme="light"] {
@@ -111,6 +113,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-details-btn: #4caf50;
   --timer-details-text: white;
   --timer-back-btn: #008cba;
+  /* going back to top button */
+  --top-btn: #4caf50;
 }
 
 [data-theme="dark"] {
@@ -160,6 +164,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-details-btn: #285e2a;
   --timer-details-text: white;
   --timer-back-btn: #0d4b9b;
+  /* going back to top button */
+  --top-btn: #285e2a;
 }
 
 [data-theme="9009"] {
@@ -211,6 +217,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-details-btn: #768e72;
   --timer-details-text: #171718;
   --timer-back-btn: #b8b8b8;
+  /* going back to top button */
+  --top-btn: #c87e74;
 }
 
 /* alphas: #dee3eb,
@@ -265,6 +273,8 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-details-btn: #f1f0f0;
   --timer-details-text: #3e5d58;
   --timer-back-btn: #4b706a;
+  /* going back to top button */
+  --top-btn: #f1f0f0;
 }
 [data-theme="modo"] {
   --background: #767a7d;
@@ -315,4 +325,6 @@ use these variables in other CSS files to create a theme dependencies */
   --timer-details-btn: #82d9d1;
   --timer-details-text: white;
   --timer-back-btn: #b8b8b8;
+  /* going back to top button */
+  --top-btn: #bb5666;
 }

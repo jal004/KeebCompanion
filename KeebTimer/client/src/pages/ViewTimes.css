@@ -68,10 +68,8 @@
   color: var(--text-secondary);
 }
 
-#timer-crud-wrapper {
-  height: 100%;
-}
-
-#timer-details-wrapper {
-  height: 100%;
+#details-top-btn {
+  display: none;
+  background-color: var(--top-btn);
+  color: var(--timer-details-text);
 }

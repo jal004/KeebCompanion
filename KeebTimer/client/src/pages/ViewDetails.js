@@ -30,9 +30,38 @@ const ViewDetails = () => {
     loadStats();
   }, [id]);
 
+  // scroll to top button function
+  const topBtn = document.getElementById("details-top-btn");
+
+  window.onscroll = () => scrollFunction();
+
+  // display scroll to top button only when user is required to scroll
+  const scrollFunction = () => {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      topBtn.style.display = "inline-block";
+    } else {
+      topBtn.style.display = "none";
+    }
+  };
+
+  // function that does the scrolling
+  const topFunction = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div id="timer-details-wrapper" style={{ marginTop: "160px" }}>
       <h1>More Details</h1>
+      <button
+        style={{ paddingTop: "8px", marginTop: "5px", marginBottom: "5px" }}
+        className="btn crud-btn-edit"
+        onClick={() => navigate(-1)}
+      >
+        Go Back
+      </button>
       <h2 style={{ marginTop: "30px" }}>Timer Statistics Per Lap</h2>
       <table className="styled-table">
         <thead>
@@ -81,11 +110,11 @@ const ViewDetails = () => {
 
       <button
         style={{ paddingTop: "8px", marginTop: "30px", marginBottom: "30px" }}
-        id="timer-details-btn"
+        id="details-top-btn"
         className="btn crud-btn-edit"
-        onClick={() => navigate(-1)}
+        onClick={() => topFunction()}
       >
-        Go Back
+        Go Back To Top
       </button>
     </div>
   );

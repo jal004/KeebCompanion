@@ -203,7 +203,7 @@ const EditTimer = () => {
         </div>
 
         <div className="counterBody">
-          <h2 id="countDiplay">{count}</h2>
+          <h2 id="countDisplay">{count}</h2>
           <div className="counterBtns">
             <button
               className="btn counter-btn"
@@ -216,6 +216,7 @@ const EditTimer = () => {
               className="btn counter-btn"
               id="decBtn"
               onClick={decrementCount}
+              disabled={count === 0}
             >
               Decrement
             </button>
