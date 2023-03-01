@@ -80,18 +80,20 @@ const Home = () => {
           })}
         </tbody>
       </table>
-      <Link to={"/view/byType"}>
-        <button className="btn btn-stats">View By Type</button>
-      </Link>
-      <Link to={"/view/statsByType"}>
-        <button className="btn btn-stats">View Stats By Type</button>
-      </Link>
-      <Link to={"/view/byPrice"}>
-        <button className="btn btn-stats">View By Price</button>
-      </Link>
-      <Link to={"/view/byQuantity"}>
-        <button className="btn btn-stats">View By Quantity</button>
-      </Link>
+      <div id="additional-btns-container" style={{ marginBottom: "30px" }}>
+        <Link to={"/view/byType"}>
+          <button className="btn btn-stats">View By Type</button>
+        </Link>
+        <Link to={"/view/statsByType"}>
+          <button className="btn btn-stats">View Stats By Type</button>
+        </Link>
+        <Link to={"/view/byPrice"}>
+          <button className="btn btn-stats">View By Price</button>
+        </Link>
+        <Link to={"/view/byQuantity"}>
+          <button className="btn btn-stats">View By Quantity</button>
+        </Link>
+      </div>
     </div>
   );
 };

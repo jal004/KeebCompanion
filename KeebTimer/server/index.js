@@ -283,7 +283,7 @@ app.put("/api/submitTimerNew", (req, res) => {
   });
 });
 
-// 7. VIEW SAVED TIMES CRUD API CALLS
+// 7. TIMER CRUD API CALLS
 // 7.1. getting all of the saved times to display in the CRUD table
 app.get("/api/getSavedTimes", (req, res) => {
   const sqlGetSavedTimes = "SELECT * FROM times";
@@ -319,6 +319,47 @@ app.get("/api/viewTime/:id", (req, res) => {
   db.query(sqlViewTime, id, (err, result) => {
     if (err) throw err;
     res.send(result);
+  });
+});
+
+// 8. VIEW MORE DETAILS OF TIMER
+// 8.1. getting laps for a timer
+app.get("/api/viewLaps/:id", (req, res) => {
+  const { id } = req.params;
+  const sqlViewLaps = "SELECT * FROM timer_stats WHERE times_id = ?";
+  db.query(sqlViewLaps, id, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// 8.2. getting lap stats for a timer
+app.get("/api/viewStats/:id", (req, res) => {
+  const { id } = req.params;
+  // view to get the lap differences between times for a timer
+  const sqlLapDiffs = `CREATE OR REPLACE VIEW lap_diffs AS 
+  SELECT
+    name,
+    IFNULL(
+      TIMEDIFF(curr_time, LAG(curr_time) OVER (PARTITION BY name ORDER BY curr_time)), 
+      curr_time) AS lap_diff
+  FROM timer_stats
+  WHERE times_id = ?`;
+  db.query(sqlLapDiffs, id, (err, result) => {
+    if (err) throw err;
+    // computing statistics from the lap differences
+    const sqlLapStats = `SELECT
+      name, 
+      COUNT(*) AS count,
+      MIN(lap_diff) AS min_diff,
+      MAX(lap_diff) AS max_diff,
+      SEC_TO_TIME(TRUNCATE(AVG(TIME_TO_SEC(lap_diff)), 0)) AS avg_diff
+    FROM lap_diffs
+    GROUP BY name`;
+    db.query(sqlLapStats, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   });
 });
 

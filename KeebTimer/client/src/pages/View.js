@@ -55,7 +55,7 @@ const View = () => {
               style={{ paddingTop: "8px" }}
               id="timer-details-btn"
               className="btn crud-btn-edit"
-              onClick={() => navigate(-1)}
+              onClick={() => navigate(`/viewDetails/${id}`)}
             >
               More Details
             </button>

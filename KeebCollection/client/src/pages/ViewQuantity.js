@@ -49,7 +49,12 @@ const ViewType = () => {
         </tbody>
       </table>
       <Link to="/">
-        <div className="btn btn-edit btn-back-view">Go Back To Home</div>
+        <div
+          style={{ marginBottom: "30px" }}
+          className="btn btn-edit btn-back-view"
+        >
+          Go Back To Home
+        </div>
       </Link>
     </div>
   );
