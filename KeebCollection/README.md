@@ -286,3 +286,4 @@ The following are various read operations for users to view their collection wit
    - This is because the default logo corresponds to the light theme.
    - After relaunching, reselecting the saved theme will fix the logo so that it matches the theme again.
    - Future plans are to convert the logos from PNG to SVG so that we can modify the colors with CSS instead of changing the picture on a theme change.
+   - This is a problem that is also present in KeebTimer because it uses the same implementation.

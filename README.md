@@ -46,9 +46,10 @@ For additional information on each of the web applications, please navigate to t
 
 ### 2. KeebTimer
 
-- preview of app here
-- description of app here
-- additional info (link to folder in repo)
+- A time manager that allows users to keep track of the time spent performing mechanical keyboard related activities.
+- The application allows users to create a timer with an integrated counter that they can save to a table with CRUD operations for future use or reference.
+- Users can also view more information and statistics for each of the timers in the table.
+- <a href="https://github.com/jal004/KeebCompanion/tree/main/KeebTimer" target="_blank">Additional Information</a>
 
 ## System Requirements:
 
@@ -109,6 +110,8 @@ After cloning the repository:
      /KeebCompanion/KeebTimer
      ```
 3. Then, find the directory corresponding to the desired application on GitHub and follow the provided 'Setup' section on the README of that directory in order to connect MySQL to the application.
+   - <a href="https://github.com/jal004/KeebCompanion/tree/main/KeebCollection#setup" target="_blank">KeebCollection Setup Section</a>
+   - <a href="https://github.com/jal004/KeebCompanion/tree/main/KeebTimer#setup" target="_blank">KeebTimer Setup Section</a>
    - This step is only required for the first usage of each application; every future use will not require this.
 4. Run the following command from your terminal in the directory of the desired application to start that application:
    ```

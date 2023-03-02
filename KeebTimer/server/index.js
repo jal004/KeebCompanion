@@ -26,7 +26,7 @@ db.connect((err) => {
   const sqlCreateDb = "CREATE DATABASE IF NOT EXISTS KeebCompanion";
   db.query(sqlCreateDb, (err, result) => {
     if (err) throw err;
-    const sqlUseDb = "USE kc_testing";
+    const sqlUseDb = "USE KeebCompanion";
     // const sqlUseDb = "USE KeebCompanion";
     db.query(sqlUseDb, (err, result) => {
       if (err) throw err;
