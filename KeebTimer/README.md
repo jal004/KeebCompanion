@@ -262,13 +262,13 @@ The goal of KeebTimer is to reduce fatigue by providing users with insight on th
    - This is a problem that is also present in KeebCollection because it uses the same implementation.
 
 2. It is possible for the data of a timer and its lap data to be mismatched
-   - That is, it is possible for a saved timer to have saved values of total time and count that do not correlate with their saved lap times.
+   - That is, it is possible for a saved timer to have saved values of total time and count that do not correspond to their saved lap times.
    - This occurs when a user edits an existing timer, but exits the page without using the finish button.
      - Two common ways of doing this are using the back button on the browser, or exiting the application while on this page.
    - The reason why this causes a mismatch is because the increment, decrement, and reset buttons on the timer page modify the lap data for the timer being edited.
    - When the user uses the finish button, these changes to the lap data are used to update the values of the timer.
-     - This means that if the user exits this page, without pressing the finish button, the timer will not be updated to match the new lap data.
-     - However because of this implementation, users can easily fix the mismatch by using the finish timer button for the affected timer on the next edit.
+     - This means that if the user exits this page without pressing the finish button, the timer will not be updated to match the new lap data.
+     - However because of this implementation, users can easily fix the mismatch by using the finish timer button for the affected timer during its next edit.
    - **The current solution** is to provide the user with a warning before they can edit a timer stating the necessary actions required to prevent timer data from being mismatched.
 
 <img 
