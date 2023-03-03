@@ -47,8 +47,8 @@ For additional information on each of the web applications, please navigate to t
 ### 2. KeebTimer
 
 - A time manager that allows users to keep track of the time spent performing mechanical keyboard related activities.
-- The application allows users to create a timer with an integrated counter that they can save to a table with CRUD operations for future use or reference.
-- Users can also view more information and statistics for each of the timers in the table.
+- The application allows users to create a timers with counters that can be saved for future use or reference.
+- Users can also view more information and statistics for each of the saved timers.
 - <a href="https://github.com/jal004/KeebCompanion/tree/main/KeebTimer" target="_blank">Additional Information</a>
 
 ## System Requirements:
